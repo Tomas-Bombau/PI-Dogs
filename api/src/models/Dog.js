@@ -12,15 +12,15 @@ module.exports = (sequelize) => {
         primaryKey: true,
         allowNull: false,
       },
-      imagen: {
+      reference_image_id: {
         type: DataTypes.STRING,
         allowNull: true,
       },
-      nombre: {
+      name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      altura: {
+      height: {
         type: DataTypes.JSON,
         allowNull: false,
         validate: {
@@ -31,7 +31,7 @@ module.exports = (sequelize) => {
           },
       },
     },
-      peso: {
+    weight: {
         type: DataTypes.JSON,
         allowNull: false, 
         validate: {
@@ -42,7 +42,7 @@ module.exports = (sequelize) => {
           },
       },
       },
-      años_de_vida: {
+      height: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
