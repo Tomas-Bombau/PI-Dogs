@@ -7,8 +7,8 @@ const dogs = Router();
 // Getting all dogs
 dogs.get("/", async (req, res) => {
   try {
-    const response = await getAllDogs();
-    res.status(200).json(response);
+    const dogs = await getAllDogs();
+    res.status(200).json(dogs);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -28,21 +28,22 @@ dogs.get("/name", (req, res) => {
 dogs.get("/:idRaza", async (req, res) => {
   const { idRaza } = req.params;
   try {
-    const response = await getDogById(idRaza);
-    res.status(200).json(response);
+    const dogById = await getDogById(idRaza);
+    res.status(200).json(dogById);
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(500).json({ error: error.message }); // Error the servidor interno
   }
 });
 
-// dogs.post('/', async (req, res) =>{
-//     const {name, life_span, weight, height, reference_image_id, temperament} = req.body
-//     try {
-//         const newDog = await postDogs(name, life_span, weight, height, reference_image_id, temperament)
-//         res.status(200).json(newDog)
-//     } catch (error) {
-//         res.status(400).json({error: error.message})
-//     }
-// })
+// Getting posting dog
+dogs.post('/', async (req, res) =>{
+    const {name, life_span, weight, height, reference_image_id, temperament} = req.body
+    try {
+        const newDog = await postDogs(name, life_span, weight, height, reference_image_id, temperament)
+        res.status(200).json(newDog)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+})
 
 module.exports = dogs;

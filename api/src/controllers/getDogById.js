@@ -4,16 +4,21 @@ const { API_KEY } = process.env;
 const { Dog } = require("../db");
 
 const getDogById = async (idRaza) => {
-  const regexValidationUUID =
-    /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/;
+  const regexValidationUUID = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/;
 
+  // Busco en Base de Datos
   if (regexValidationUUID.test(idRaza)) {
     const dogById = await Dog.findByPk(idRaza);
     if (!dogById) {
-      throw Error("The UUID you provided doesn't match our records in the DataBase");
-    } else return dogById;
+      throw Error(
+        "The UUID you provided doesn't match our records in the DataBase"
+      );
+    } else {
+      return dogById;
+    }
   }
 
+  // Busco en API
   if (idRaza) {
     const getDogById = await axios.get(
       `https://api.thedogapi.com/v1/breeds/${idRaza}?api_key=${API_KEY}`
@@ -32,7 +37,9 @@ const getDogById = async (idRaza) => {
       };
       return dogIdDetail;
     } else {
-        throw Error("The ID you provided doesn't match our records in the API or DataBase")
+      throw Error(
+        "The ID you provided doesn't match our records in the API or DataBase"
+      );
     }
   }
 };

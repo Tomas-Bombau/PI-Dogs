@@ -1,12 +1,14 @@
 const Router = require('express')
+const getAllTemperaments = require('../controllers/getAllTemperaments')
 const temperaments = Router()
 
 //Getting all the temperaments
 temperaments.get('/', async (req, res) =>{
     try {
-        res.status(200).send('Funciona ruta temperamets')
+        const allTemperaments = await getAllTemperaments()
+        res.status(200).json(allTemperaments)
     } catch (error) {
-       
+        res.status(400).json({ error: error.message });
     }
 })
 

@@ -7,29 +7,30 @@ const getAllDogs = async () => {
   const getAllDogsApi = await axios.get(
     `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`
   );
-  const allDogsData = getAllDogsApi.data;
 
-  const dogsDetail = await allDogsData.map((dogData) => {
-      const dogDetail = {
-        id: dogData.id,
-        name: dogData.name,
-        life_span: dogData.life_span,
-        weight: dogData.weight,
-        height: dogData.height,
-        reference_image_id: `https://cdn2.thedogapi.com/images/${dogData.reference_image_id}.jpg`,
-      };
-      return dogDetail;
-  });
+  const allDogsApi = await getAllDogsApi.data.map((dogData) => {
+    const dogDetail = {
+      id: dogData.id,
+      name: dogData.name,
+      life_span: dogData.life_span,
+      weight: dogData.weight,
+      height: dogData.height,
+      reference_image_id: `https://cdn2.thedogapi.com/images/${dogData.reference_image_id}.jpg`,
+    };
+    return dogDetail;
+});
 
-  const getAllDogsDB = await Dog.findAll({
+  const allDogsDB = await Dog.findAll({
     include:{
         model: Temperament,
         attributes: ['name'],
-        through: [],
+        through: {
+          attributes: []
+        },
     }
   })
 
-  const getAllDogs = [...dogsDetail, ...getAllDogsDB]
+  const getAllDogs = [...allDogsApi, ...allDogsDB]
 
   return getAllDogs
 };
