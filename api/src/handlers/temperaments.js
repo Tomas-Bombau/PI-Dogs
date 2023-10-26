@@ -8,7 +8,7 @@ temperaments.get('/', async (req, res) =>{
         const allTemperaments = await getAllTemperaments()
         res.status(200).json(allTemperaments)
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
 })
 

@@ -12,9 +12,14 @@ module.exports = (sequelize) => {
         primaryKey: true,
         allowNull: false,
       },
+      reference_image_id: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
       },
       life_span: {
         type: DataTypes.STRING,
@@ -26,9 +31,7 @@ module.exports = (sequelize) => {
         validate: {
           validData(weight) {
             if (!weight || !weight.imperial || !weight.metric) {
-              throw new Error(
-                "weight must have imperial and metric properties."
-              );
+              throw Error("weight must have imperial and metric properties.");
             }
           },
         },
@@ -38,23 +41,19 @@ module.exports = (sequelize) => {
         allowNull: false,
         validate: {
           validData(height) {
-            if (!height || !height.imperial || !height.metric) {
-              throw new Error(
-                "height must have imperial and metric properties."
+            if (!height.imperial || !height.metric) {
+              throw Error(
+                "height must have imperial and metric properties and their values cannot be undefined."
               );
             }
           },
         },
       },
-      reference_image_id: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
       createdInDb: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-        defaultValue: true 
-      }
+        defaultValue: true,
+      },
     },
     {
       timestamps: false,

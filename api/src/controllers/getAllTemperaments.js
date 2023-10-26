@@ -9,10 +9,10 @@ const getAllTemperaments = async () => {
   let concatenatedArray = [];
   let allTemperaments = [];
 
-  const getAllDogsApi = await axios.get(
+  const getAllDogs = await axios.get(
     `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`
   );
-  const getAllDogsData = getAllDogsApi.data;
+  const getAllDogsData = getAllDogs.data;
 
   // Extraigo el STRING de temperamentos y lo transformo en elementos de un mismo ARRAY
   await getAllDogsData.forEach(async (dogData) => {
