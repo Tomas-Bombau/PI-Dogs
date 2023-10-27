@@ -57,7 +57,7 @@ dogs.post("/", async (req, res) => {
     temperaments,
   } = req.body;
   try {
-    const newDog = await postDogs(
+    await postDogs(
       reference_image_id,
       name,
       life_span,
@@ -68,7 +68,7 @@ dogs.post("/", async (req, res) => {
       createdInDb,
       temperaments
     );
-    res.status(200).send(newDog);
+    res.status(200).send('Dog created successfully');
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

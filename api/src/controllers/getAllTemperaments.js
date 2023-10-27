@@ -15,9 +15,9 @@ const getAllTemperaments = async () => {
   const getAllDogsData = getAllDogs.data;
 
   // Extraigo el STRING de temperamentos y lo transformo en elementos de un mismo ARRAY
-  await getAllDogsData.forEach(async (dogData) => {
-    const allTemperaments = await dogData.temperament;
-    if (allTemperaments && typeof allTemperaments === "string") {
+  await getAllDogsData.forEach((dogData) => {
+    const allTemperaments = dogData.temperament;
+    if (allTemperaments) {
       const splitedTemperaments = allTemperaments.split(", ");
       temperaments.push(splitedTemperaments);
     } 
