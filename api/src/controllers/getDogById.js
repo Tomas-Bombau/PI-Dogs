@@ -1,8 +1,6 @@
 require("dotenv").config();
-const axios = require("axios");
-const { Dog } = require("../db");
-const { Temperament } = require("../db");
-const { API_KEY } = process.env;
+const { Dog, Temperament } = require("../db");
+const { getAllDogsApi } = require("./getAllDogs");
 
 const getDogById = async (idRaza) => {
   const regexValidationUUID =
@@ -10,7 +8,7 @@ const getDogById = async (idRaza) => {
 
   // Busco en Base de Datos
   if (regexValidationUUID.test(idRaza)) {
-    const dogById = await Dog.findOne({
+    const getDogById = await Dog.findOne({
       where: { id: idRaza },
       include: {
         model: Temperament,
@@ -20,25 +18,18 @@ const getDogById = async (idRaza) => {
         },
       },
     });
-    return dogById;
+
+    const arrangeTemperaments = getDogById.temperaments.map((temp) => temp.name); 
+    const dogById = {...getDogById.get(), temperaments: arrangeTemperaments}
+    return dogById
   }
 
   //Busco en la API y le agrego los temperamentos
-  const getAllDogsApi = await axios.get(
-    `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`
-  );
-  const findDogById = await getAllDogsApi.data.find((dog) => dog.id == idRaza);
-
-  const dogById = {
-    id: findDogById.id,
-    reference_image_id: `https://cdn2.thedogapi.com/images/${findDogById.reference_image_id}.jpg`,
-    name: findDogById.name,
-    life_span: findDogById.life_span,
-    weight: findDogById.weight,
-    height: findDogById.height,
-    temperament: findDogById.temperament,
-  };
+  const getAllDogsFromApi = await getAllDogsApi()
+  const dogById = getAllDogsFromApi.find((dog) => dog.id == idRaza);
   return dogById;
 };
 
 module.exports = getDogById;
+
+

@@ -25,29 +25,21 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      weight: {
-        type: DataTypes.JSON,
+      weightMin: {
+        type: DataTypes.INTEGER,
         allowNull: false,
-        validate: {
-          validData(weight) {
-            if (!weight || !weight.imperial || !weight.metric) {
-              throw Error("weight must have imperial and metric properties.");
-            }
-          },
-        },
       },
-      height: {
-        type: DataTypes.JSON,
+      weightMax: {
+        type: DataTypes.INTEGER,
         allowNull: false,
-        validate: {
-          validData(height) {
-            if (!height.imperial || !height.metric) {
-              throw Error(
-                "height must have imperial and metric properties and their values cannot be undefined."
-              );
-            }
-          },
-        },
+      },
+      heightMin: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      heightMax: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
       createdInDb: {
         type: DataTypes.BOOLEAN,
