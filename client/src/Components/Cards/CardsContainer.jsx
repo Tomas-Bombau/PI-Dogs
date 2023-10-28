@@ -1,10 +1,11 @@
 import React from "react";
 import Cards from "./Cards";
+import css from './CardsContainer.module.css'
 
 const CardsContainer = (props) => {
   const { dogs } = props;
   return (
-    <div>
+    <div className={css.cardsContainer}>
       {dogs.map((e) => {
         return (
           <Cards

@@ -1,11 +1,12 @@
 import React from "react";
+import css from './Temperaments.module.css'
 
 const Temperaments = (props) => {
   const { temperaments } = props;
   return (
-    <div>
+    <div className={css.hola}>
       {temperaments.map((temperament) => (
-        <p>{temperament}</p>
+        <span> {temperament} </span>
       ))}
     </div>
   );

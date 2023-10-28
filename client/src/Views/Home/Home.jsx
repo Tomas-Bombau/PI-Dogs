@@ -23,7 +23,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>CARDS</h1>
+      <h1>Bienvenidos al mundo de los perros!</h1>
       <CardsContainer dogs={dogs}/>;
     </div>
   );
