@@ -6,13 +6,13 @@
     border-radius: 20px;
 }
 
-img{
+.cards img{
     height: 200px;
     width: 300px;
     box-shadow: 0px 2px 10px rgb(205, 40, 122, 0.7);
 }
 
-h2{
+.cards h2{
     text-align: center;
     margin: 5px;
 }

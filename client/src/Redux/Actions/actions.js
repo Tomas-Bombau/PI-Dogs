@@ -8,7 +8,7 @@ import {
 import axios from 'axios'
 
 export const getDogs = () => {
-  return async (dispatch) => {
+  return async function (dispatch){
     try {
       const response = await axios.get("http://localhost:3001/dogs/");
       return dispatch({
@@ -22,7 +22,7 @@ export const getDogs = () => {
 };
 
 export const getTemperaments = () => {
-  return async (dispatch) => {
+  return async function (dispatch) {
     try {
       const response = await axios.get("http://localhost:3001/temperaments");
       const data = response.data;

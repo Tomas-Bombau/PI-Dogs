@@ -22,7 +22,7 @@
     padding: 10px 0px;
 }
 
-button{
+.container button{
     margin-top: 20px;
     padding: 10px 30px;
     border: none;
@@ -32,7 +32,7 @@ button{
 
 }
 
-button:hover{
+.container button:hover{
     cursor: pointer;
     background-color: #cd287a;
     transition: all 1000ms ease;
