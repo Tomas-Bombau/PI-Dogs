@@ -2,8 +2,8 @@ import {
   GET_DOGS,
   GET_TEMPERAMENTS,
   SEARCH,
-  FILTER,
-  ORDER,
+  // FILTER,
+  // ORDER,
 } from "../Actions/actionsTypes";
 
 const initialState = {
@@ -22,11 +22,8 @@ const rootReducer = (state = initialState, action) => {
     case GET_TEMPERAMENTS:
       return { ...state, allTemperaments: action.payload };
     case SEARCH:
-      return { ...state, dogsSearch: action.payload };
-    case FILTER:
-
-    case ORDER:
-
+      return { ...state, allDogs: action.payload };
+      
     default:
       break;
   }

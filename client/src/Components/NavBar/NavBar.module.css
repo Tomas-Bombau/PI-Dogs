@@ -2,7 +2,7 @@ nav{
     position: sticky;
     top: 0px;
     width: 70%;
-    margin: 0 auto;
+    margin: 10px auto;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -11,19 +11,7 @@ nav{
 }
 
 nav input{
+    width: 20%;
     padding: 5px 10px;
 }
 
-nav button{
-    padding: 10px 10px;
-    border: none;
-    background-color: black;
-    border-radius: 10px;
-    color: white;
-}
-
-nav button:hover{
-    cursor: pointer;
-    background-color: #cd287a;
-    transition: all 1000ms ease;
-}

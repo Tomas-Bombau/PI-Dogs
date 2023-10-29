@@ -6,7 +6,7 @@ const CardsContainer = (props) => {
   const { dogs } = props;
   return (
     <div className={css.cardsContainer}>
-      {dogs.map((e) => {
+      {dogs?.map((e) => {
         return (
           <Cards
             key={e.id} 

@@ -2,9 +2,9 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDogs, getTemperaments } from "../../Redux/Actions/actions";
+import {Link} from 'react-router-dom'
 import CardsContainer from "../../Components/Cards/CardsContainer";
 import css from "./Home.module.css";
-import homeImage from "../../assets/home-img.jpg";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -24,20 +24,32 @@ const Home = () => {
   if (loading) {
     return <div> Loading... </div>;
   } 
+
+const handleReaload = (event) =>{
+  event.preventDefault()
+  dispatch(getDogs())
+}
+
+const handleOrder = (event) =>{
+  event.preventDefault()
+  // dispatch(order(event.value))
+}
+  
   
   return (
     <div>
       <section className={css.homeContainer}>
         <h1>Bienvenidos al mundo de los perros!</h1>
         <div>
-          <button>Recargar perros</button>
+          <Link to='/create'><button>Crear perro</button></Link>
+          <button onClick={handleReaload}>Recargar perros</button>
           <select name="order" id="">
-            <option value="ascendente">Ascendente</option>
-            <option value="descendente">Descendente</option>
+            <option onClick={handleOrder} value="asc">Ascendente</option>
+            <option onClick={handleOrder} value="desc">Descendente</option>
           </select>
           <select name="temperaments" id="">
             {temperaments.map((temperament) => (
-              <option>{temperament}</option>
+              <option value={temperament}>{temperament}</option>
             ))}
           </select>
         </div>

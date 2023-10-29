@@ -16,7 +16,7 @@ const getDogByNameAPI = async (name) => {
   const dogsMatches = await dogsFilter.map((dog) => {
     return {
       id: dog.id,
-      reference_image_id: `https://cdn2.thedogapi.com/images/${dog.reference_image_id}.jpg`,
+      reference_image_id: dog.reference_image_id,
       name: dog.name,
       life_span: dog.life_span,
       weightMin: dog.weightMin,

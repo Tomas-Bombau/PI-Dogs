@@ -52,3 +52,10 @@ export const searchByName = (name) => {
     }
   };
 };
+
+// export const order = (value) => {
+//   return {
+//     type: ORDER,
+//     payload: value,
+//   }
+// };
