@@ -29,8 +29,21 @@ const getAllTemperaments = async () => {
   // Elimino los duplicados
   allTemperaments = removeDuplicatedValues(concatenatedArray);
 
+  // Ordeno por orden alfabetico
+  const temperamentsInAlphabeticalOrder = allTemperaments.sort((a, b) => {
+    const nameA = a.trim().toLowerCase(); 
+    const nameB = b.trim().toLowerCase();
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0;
+  })
+
   // Agrego los datos a la Base de Datos
-  allTemperaments.map(
+  temperamentsInAlphabeticalOrder.map(
     async (temperament) =>
       await Temperament.findOrCreate({
         where: { name: temperament }

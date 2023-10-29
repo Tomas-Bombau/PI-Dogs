@@ -11,6 +11,7 @@ import Pagination from "../../Components/Pagination/Pagination";
 const Home = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
+  const [aux, setAux] = useState(true)
 
   useEffect(() => {
     dispatch(getDogs())
@@ -41,6 +42,7 @@ const Home = () => {
     event.preventDefault()
     const value = event.target.value
     dispatch(orderName(value))
+    setAux(!aux) //Esto me permite actualizar el estado y renderizar nuevamente la pagina. REACT no toma el el sort como un cambio de arreglo, porque el sort solo hace cambiar de posicion los elementos.
   }
 
 

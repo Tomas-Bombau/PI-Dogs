@@ -1,4 +1,3 @@
-import { orderTemperaments } from "../../sortFunction";
 import {
   GET_DOGS,
   GET_TEMPERAMENTS,
@@ -19,37 +18,52 @@ const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_DOGS:
       return { ...state, allDogs: action.payload, allDogsCopy: action.payload };
+
     case GET_TEMPERAMENTS:
-      return { ...state, allTemperaments: action.payload};
+      return { ...state, allTemperaments: action.payload };
+
     case SEARCH:
       return { ...state, allDogs: action.payload };
+
     case ORDER_NAME:
-      if (action.payload === "desc") {
-        const allDogs = state.allDogsCopy;
-        const orderDogs = allDogs.sort((a, b) => {
-          const nameA = a.name.trim().toLowerCase();
-          const nameB = b.name.trim().toLowerCase();
-          if (nameA < nameB) {
-            return 1;
-          }
-          if (nameA > nameB) {
-            return -1;
-          }
-          return 0;
-        });
-        return { ...state, allDogs: orderDogs };
-      }
+      const dogsCopy = state.allDogsCopy;
+      const dogsByName =
+        action.payload === "desc"
+          ? dogsCopy.sort((a, b) => {
+              const nameA = a.name.trim().toLowerCase();
+              const nameB = b.name.trim().toLowerCase();
+              if (nameA < nameB) {
+                return 1;
+              }
+              if (nameA > nameB) {
+                return -1;
+              }
+              return 0;
+            })
+          : dogsCopy.sort((a, b) => {
+              const nameA = a.name.trim().toLowerCase();
+              const nameB = b.name.trim().toLowerCase();
+              if (nameA < nameB) {
+                return -1;
+              }
+              if (nameA > nameB) {
+                return 1;
+              }
+              return 0;
+            });
+      return { ...state, allDogs: dogsByName };
+
     case ORDER_WEIGHT:
 
     case FILTER_TEMPERAMENT:
       const dogs = state.allDogsCopy;
-      if (action.payload !== "Todos") {
+      if (action.payload === "Todos") {
+        return { ...state, allDogs: dogs };
+      } else {
         const filteredDog = dogs.filter((dog) =>
           dog.temperaments.includes(action.payload)
         );
-        return { ...state, allDogs: filteredDog };
-      } else {
-        return{ ...state, allDogs: dogs};
+        return { ...state, allDogs: filteredDog };  
       }
     default:
       break;
