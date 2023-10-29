@@ -8,9 +8,8 @@
 span{
     color: white;
     margin: 5px;
-    background-color: rgb(205, 40, 122, 0.7);
+    background-color: rgba(205, 40, 122, 0.7);
     border: 1px solid black;
     border-radius: 10px 0px;
-    box-shadow: 2px 1px 5px red;
     padding: 5px;
 }

@@ -1,0 +1,23 @@
+ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 2px;    
+}
+
+ul li{
+    font-size: large;
+    list-style-type: none;
+    text-align: center;
+    color: white;
+    width: 20px;
+    background-color: rgba(205, 40, 122, 0.7);
+    transform: scale(1);
+    border: 1px solid black;
+}
+
+li:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}

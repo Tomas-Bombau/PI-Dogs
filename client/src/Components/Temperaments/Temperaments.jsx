@@ -5,8 +5,8 @@ const Temperaments = (props) => {
   const { temperaments } = props;
   return (
     <div className={css.hola}>
-      {temperaments.map((temperament) => (
-        <span> {temperament} </span>
+      {temperaments.map((temperament, index) => (
+        <span key={index}> {temperament} </span>
       ))}
     </div>
   );

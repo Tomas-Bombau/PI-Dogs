@@ -16,9 +16,8 @@ const NavBar = () => {
   }
 
   return (
-    <nav>
+    <nav className={css.navBar}>
         <input placeholder='Busca un perro escribiendo su raza...' value={name} onChange={handleName} type="text" />
-    <button>esa</button>
     </nav>
   )
 }

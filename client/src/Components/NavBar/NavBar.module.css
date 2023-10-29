@@ -1,4 +1,4 @@
-nav{
+.navBar{
     position: sticky;
     top: 0px;
     width: 70%;
@@ -10,7 +10,7 @@ nav{
     gap: 20px;
 }
 
-nav input{
+.navBar input{
     width: 20%;
     padding: 5px 10px;
 }
