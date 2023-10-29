@@ -8,8 +8,6 @@ const Pagination = ({ dogsPerPage, dogs, pagination }) => {
     pageNumbers.push(i);
   }
 
-  console.log(pageNumbers);
-
   return (
     <nav>
       <ul>

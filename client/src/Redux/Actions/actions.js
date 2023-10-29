@@ -2,8 +2,8 @@ import {
   GET_DOGS,
   GET_TEMPERAMENTS,
   SEARCH,
-  // FILTER,
-  // ORDER,
+  FILTER_TEMPERAMENT,
+  ORDER_NAME,
 } from "./actionsTypes";
 import axios from 'axios'
 
@@ -53,9 +53,16 @@ export const searchByName = (name) => {
   };
 };
 
-// export const order = (value) => {
-//   return {
-//     type: ORDER,
-//     payload: value,
-//   }
-// };
+export const orderName = (value) => {
+  return {
+    type: ORDER_NAME,
+    payload: value,
+  }
+}
+
+  export const filterTemperament = (value) => {
+    return {
+      type: FILTER_TEMPERAMENT,
+      payload: value,
+    }
+};

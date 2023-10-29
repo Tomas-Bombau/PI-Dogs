@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDogs, getTemperaments } from "../../Redux/Actions/actions";
+import { filterTemperament, getDogs, getTemperaments, orderName } from "../../Redux/Actions/actions";
 import {Link} from 'react-router-dom'
 import CardsContainer from "../../Components/Cards/CardsContainer";
 import css from "./Home.module.css";
@@ -39,14 +39,16 @@ const Home = () => {
   
   const handleOrder = (event) =>{
     event.preventDefault()
-    // dispatch(order(event.value))
+    const value = event.target.value
+    dispatch(orderName(value))
   }
-  
-  // const handleSource = (event) => {
-  //   event.preventDefault()
-  //   const getBySource = event.target.value
-  //   // dispatch(X(getBySource))
-  // }  
+
+
+  const handleTemperaments = (event) =>{
+    event.preventDefault()
+    const value = event.target.value
+    dispatch(filterTemperament(value))
+  }
   
   if (loading) {
     return <div> Loading... </div>;
@@ -59,17 +61,18 @@ const Home = () => {
         <div>
           <Link to='/create'><button>Crear perro</button></Link>
           <button onClick={handleReaload}>Recargar perros</button>
-          <select name="order" id="">
-            <option onClick={handleOrder} value="asc">Ascendente</option>
-            <option onClick={handleOrder} value="desc">Descendente</option>
+          <select name="order" onChange={handleOrder} >
+            <option value="asc">Ascendente</option>
+            <option value="desc">Descendente</option>
           </select>
-          <select name="temperaments" id="">
+          <select name="temperaments" onChange={handleTemperaments}>
+            <option value='Todos'> Todos </option>
             {temperaments.map((temperament, index) => (
               <option key={index} value={temperament}>{temperament}</option>
             ))}
           </select>
           <select name="order" id="">
-            <option value="todos">Todos </option>
+            <option value="todos"> Todos </option>
             <option value="db"> Creados </option>
             <option value="api"> Existentes</option>
           </select>
