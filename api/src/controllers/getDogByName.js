@@ -10,8 +10,8 @@ const getDogByNameAPI = async (name) => {
   const getAllDogs = await getAllDogsApi();
 
   const dogsFilter = getAllDogs.filter((dog) =>
-    dog.name.toLowerCase().includes(nameLow)
-  ); // Transformo las razas de la API a minusculas y luego filtro segun si incluyen o no el name de la quuery
+    dog.name.trim().toLowerCase().includes(nameLow)
+  ); // Transformo las razas de la API a minusculas y luego filtro segun si incluyen o no el name de la query
 
   const dogsMatches = await dogsFilter.map((dog) => {
     return {

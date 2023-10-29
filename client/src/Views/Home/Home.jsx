@@ -5,6 +5,7 @@ import { getDogs, getTemperaments } from "../../Redux/Actions/actions";
 import {Link} from 'react-router-dom'
 import CardsContainer from "../../Components/Cards/CardsContainer";
 import css from "./Home.module.css";
+import NoDogs from "../../Components/NoDogs/NoDogs"
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -54,7 +55,8 @@ const handleOrder = (event) =>{
           </select>
         </div>
       </section>
-      <CardsContainer dogs={dogs} />;
+      {dogs.length === 0 ? <NoDogs />: 
+      <CardsContainer dogs={dogs} />}
     </div>
   );
 };

@@ -1,0 +1,19 @@
+.noDogs{
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    position: relative;
+}
+
+.noDogs img{
+    margin-top: 100px;
+    
+}
+
+.noDogs h1{
+    position: absolute;
+    bottom: 0%;
+}

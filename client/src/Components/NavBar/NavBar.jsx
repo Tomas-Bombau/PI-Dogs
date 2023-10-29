@@ -5,7 +5,6 @@ import { searchByName } from '../../Redux/Actions/actions'
 
 
 const NavBar = () => {
-
   const dispatch = useDispatch()
   const [name, setName] = useState('')
 
@@ -13,12 +12,13 @@ const NavBar = () => {
     event.preventDefault()
     const nameEntered = event.target.value
     setName(nameEntered)
-    dispatch(searchByName(name))
+    dispatch(searchByName(nameEntered))
   }
 
   return (
     <nav>
         <input placeholder='Busca un perro escribiendo su raza...' value={name} onChange={handleName} type="text" />
+    <button>esa</button>
     </nav>
   )
 }
