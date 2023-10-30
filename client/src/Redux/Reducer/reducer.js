@@ -5,20 +5,22 @@ import {
   FILTER_TEMPERAMENT,
   ORDER_NAME,
   ORDER_WEIGHT,
+  FILTER_SOURCE,
 } from "../Actions/actionsTypes";
 
 const initialState = {
   allDogs: [],
   allDogsCopy: [],
   allTemperaments: [],
-  copyOfWeight: []
+  copyOfWeight: [],
+  dbDog: [],
 };
 
 const rootReducer = (state = initialState, action) => {
-
   switch (action.type) {
     case GET_DOGS:
-      return { ...state, allDogs: action.payload, allDogsCopy: action.payload };
+      const db = action.payload.filter((dog) => dog.createdInDb === true)
+      return { ...state, allDogs: action.payload, allDogsCopy: action.payload, dbDog: db };
 
     case GET_TEMPERAMENTS:
       return { ...state, allTemperaments: action.payload };
@@ -54,17 +56,23 @@ const rootReducer = (state = initialState, action) => {
             });
       return { ...state, allDogs: dogsByName };
 
-      
     case ORDER_WEIGHT:
       const dogsWeight = state.allDogsCopy;
 
       const dogsByWeight =
         action.payload === "crec"
-          ? dogsWeight.sort((a, b) => (b === undefined || b.weightMin === undefined || isNaN(b.weightMin)) ? -1 : a.weightMin - b.weightMin)// Algunos perros no tienen dato en el peso y con el condicional y el return -1 los mando al final
-          : dogsWeight.sort((a, b) => (b === undefined || b.weightMax === undefined || isNaN(b.weightMax)) ? -1 : b.weightMax - a.weightMax); // Algunos perros no tienen dato en el peso y con el condicional y el return -1 los mando al final
-          
-      return { ...state, allDogs: dogsByWeight};
+          ? dogsWeight.sort((a, b) =>
+              b === undefined || b.weightMin === undefined || isNaN(b.weightMin)
+                ? -1
+                : a.weightMin - b.weightMin
+            ) // Algunos perros no tienen dato en el peso y con el condicional y el return -1 los mando al final
+          : dogsWeight.sort((a, b) =>
+              b === undefined || b.weightMax === undefined || isNaN(b.weightMax)
+                ? -1
+                : b.weightMax - a.weightMax
+            ); // Algunos perros no tienen dato en el peso y con el condicional y el return -1 los mando al final
 
+      return { ...state, allDogs: dogsByWeight };
 
     case FILTER_TEMPERAMENT:
       const dogs = state.allDogsCopy;
@@ -76,6 +84,19 @@ const rootReducer = (state = initialState, action) => {
         );
         return { ...state, allDogs: filteredDog };
       }
+
+    case FILTER_SOURCE:
+      const newCopy = state.allDogsCopy;
+      if (action.payload === "todos") {
+        return { ...state, allDogs: newCopy};
+      } else if (action.payload === "db") {
+        const filteredDogDB = newCopy.filter((dog) => dog.createdInDb === true);
+        return { ...state, allDogs: filteredDogDB};
+      } else {
+        const filteredDog = newCopy.filter((dog) => !dog.createdInDb);
+        return { ...state, allDogs: filteredDog };
+      }
+
     default:
       break;
   }

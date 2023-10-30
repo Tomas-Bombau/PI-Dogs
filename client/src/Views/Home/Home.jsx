@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterTemperament, getDogs, getTemperaments, orderName, orderWeight } from "../../Redux/Actions/actions";
+import { filterSource, filterTemperament, getDogs, getTemperaments, orderName, orderWeight } from "../../Redux/Actions/actions";
 import {Link} from 'react-router-dom'
 import CardsContainer from "../../Components/Cards/CardsContainer";
 import css from "./Home.module.css";
@@ -55,6 +55,13 @@ const Home = () => {
     const value = event.target.value
     dispatch(filterTemperament(value))
   }
+
+  const handleSource = (event) =>{
+    event.preventDefault()
+    const value = event.target.value
+    dispatch(filterSource(value))
+    setCurrentPage(1)
+  }
   
   if (loading) {
     return <div> Loading... </div>;
@@ -79,7 +86,7 @@ const Home = () => {
               <option key={index} value={temperament}>{temperament}</option>
             ))}
           </select>
-          <select name="order" id="">
+          <select onChange={handleSource} name="order" id="">
             <option value="todos"> Todos </option>
             <option value="db"> Creados </option>
             <option value="api"> Existentes</option>

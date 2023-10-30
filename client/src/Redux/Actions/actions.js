@@ -3,6 +3,7 @@ import {
   GET_TEMPERAMENTS,
   SEARCH,
   FILTER_TEMPERAMENT,
+  FILTER_SOURCE,
   ORDER_NAME,
   ORDER_WEIGHT,
 } from "./actionsTypes";
@@ -74,4 +75,11 @@ export const filterTemperament = (value) => {
     type: FILTER_TEMPERAMENT,
     payload: value,
   };
+}
+
+  export const filterSource = (value) => {
+    return {
+      type: FILTER_SOURCE,
+      payload: value,
+    };
 };
