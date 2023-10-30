@@ -81,7 +81,7 @@ const Home = () => {
             <option value="decre"> Perros más pesados </option>
           </select>
           <select name="temperaments" onChange={handleTemperaments}>
-            <option value='Todos'> Todos </option>
+            <option value='todos'> Todos </option>
             {temperaments.map((temperament, index) => (
               <option key={index} value={temperament}>{temperament}</option>
             ))}

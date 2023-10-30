@@ -12,7 +12,6 @@ const initialState = {
   allDogs: [],
   allDogsCopy: [],
   allTemperaments: [],
-  copyOfWeight: [],
   dbDog: [],
 };
 
@@ -58,7 +57,6 @@ const rootReducer = (state = initialState, action) => {
 
     case ORDER_WEIGHT:
       const dogsWeight = state.allDogsCopy;
-
       const dogsByWeight =
         action.payload === "crec"
           ? dogsWeight.sort((a, b) =>
@@ -75,25 +73,25 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, allDogs: dogsByWeight };
 
     case FILTER_TEMPERAMENT:
-      const dogs = state.allDogsCopy;
-      if (action.payload === "Todos") {
-        return { ...state, allDogs: dogs };
+      const copyForTemperamentSource = state.allDogsCopy;
+      if (action.payload === "todos") {
+        return { ...state, allDogs: copyForTemperamentSource };
       } else {
-        const filteredDog = dogs.filter((dog) =>
+        const filteredDog = copyForTemperamentSource.filter((dog) =>
           dog.temperaments.includes(action.payload)
         );
         return { ...state, allDogs: filteredDog };
       }
 
     case FILTER_SOURCE:
-      const newCopy = state.allDogsCopy;
+      const copyForSourceFilter = state.allDogsCopy;
       if (action.payload === "todos") {
-        return { ...state, allDogs: newCopy};
+        return { ...state, allDogs: copyForSourceFilter};
       } else if (action.payload === "db") {
-        const filteredDogDB = newCopy.filter((dog) => dog.createdInDb === true);
+        const filteredDogDB = copyForSourceFilter.filter((dog) => dog.createdInDb === true);
         return { ...state, allDogs: filteredDogDB};
       } else {
-        const filteredDog = newCopy.filter((dog) => !dog.createdInDb);
+        const filteredDog = copyForSourceFilter.filter((dog) => !dog.createdInDb);
         return { ...state, allDogs: filteredDog };
       }
 
