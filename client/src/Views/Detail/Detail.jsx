@@ -1,16 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { getDogById } from "../../Redux/Actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import css from "./Detail.module.css";
 
 const Detail = () => {
-  const { id } = useParams();
+  const params = useParams();
+  const id = params.id
+
+  console.log(id)
+
   const dispatch = useDispatch();
 
+
   useEffect(() => {
-    dispatch(getDogById(id));
-  }, [dispatch]);
+    dispatch(getDogById(id))
+  }, []);
 
   const dogId = useSelector((state) => state?.dogId);
 
@@ -38,7 +43,7 @@ const Detail = () => {
             </div>
           </div>
           <div className={css.temperamentsInformation}>
-            {dogId?.temperaments.map((temperament, index) => (
+            {dogId.temperaments?.map((temperament, index) => (
               <span key={index}> {temperament} </span>
             ))}
           </div>
