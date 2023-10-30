@@ -30,7 +30,7 @@ const getAllTemperaments = async () => {
   allTemperaments = removeDuplicatedValues(concatenatedArray);
 
   // Ordeno por orden alfabetico
-  const temperamentsInAlphabeticalOrder = allTemperaments.sort((a, b) => {
+  const orderTemperaments = allTemperaments.sort((a, b) => {
     const nameA = a.trim().toLowerCase(); 
     const nameB = b.trim().toLowerCase();
     if (nameA < nameB) {
@@ -43,7 +43,7 @@ const getAllTemperaments = async () => {
   })
 
   // Agrego los datos a la Base de Datos
-  temperamentsInAlphabeticalOrder.map(
+  orderTemperaments.map(
     async (temperament) =>
       await Temperament.findOrCreate({
         where: { name: temperament }
