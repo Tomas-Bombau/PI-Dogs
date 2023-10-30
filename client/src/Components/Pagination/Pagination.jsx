@@ -17,8 +17,8 @@ const Pagination = ({ dogsPerPage, dogs, pagination, setCurrentPage, currentPage
         {pageNumbers &&
           pageNumbers.map((number, index) => {
             return (
-              <li key={index}>
-                <a onClick={() => pagination(number)}> {number}</a>
+              <li onClick={() => pagination(number)} key={index}>
+                <a> {number} </a>
               </li>
             );
           })}
