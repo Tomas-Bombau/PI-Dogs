@@ -11,7 +11,6 @@ const initialState = {
   allDogs: [],
   allDogsCopy: [],
   allTemperaments: [],
-  dogsFiltered: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -26,10 +25,10 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, allDogs: action.payload };
 
     case ORDER_NAME:
-      const dogsCopy = state.allDogsCopy;
+      const dogsName = state.allDogsCopy;
       const dogsByName =
-        action.payload === "desc"
-          ? dogsCopy.sort((a, b) => {
+        action.payload === "z-a"
+          ? dogsName.sort((a, b) => {
               const nameA = a.name.trim().toLowerCase();
               const nameB = b.name.trim().toLowerCase();
               if (nameA < nameB) {
@@ -40,7 +39,7 @@ const rootReducer = (state = initialState, action) => {
               }
               return 0;
             })
-          : dogsCopy.sort((a, b) => {
+          : dogsName.sort((a, b) => {
               const nameA = a.name.trim().toLowerCase();
               const nameB = b.name.trim().toLowerCase();
               if (nameA < nameB) {
@@ -54,6 +53,12 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, allDogs: dogsByName };
 
     case ORDER_WEIGHT:
+      const dogsWeight = state.allDogsCopy;
+      const dogsByWeight = 
+        action.payload === "crec" 
+          ? dogsWeight.sort((a, b) => a.weightMin - b.weightMin)
+          : dogsWeight.sort((a, b) => b.weightMax - a.weightMax)
+          return { ...state, allDogs: dogsByWeight };
 
     case FILTER_TEMPERAMENT:
       const dogs = state.allDogsCopy;

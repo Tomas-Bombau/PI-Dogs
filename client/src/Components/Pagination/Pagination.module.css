@@ -21,3 +21,8 @@ li:hover{
     cursor: pointer;
     transform: scale(1.2);
 }
+
+a:hover{
+    cursor: pointer;
+}
+

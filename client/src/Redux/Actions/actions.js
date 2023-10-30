@@ -4,11 +4,12 @@ import {
   SEARCH,
   FILTER_TEMPERAMENT,
   ORDER_NAME,
+  ORDER_WEIGHT,
 } from "./actionsTypes";
-import axios from 'axios'
+import axios from "axios";
 
 export const getDogs = () => {
-  return async function (dispatch){
+  return async function (dispatch) {
     try {
       const response = await axios.get("http://localhost:3001/dogs/");
       return dispatch({
@@ -57,12 +58,20 @@ export const orderName = (value) => {
   return {
     type: ORDER_NAME,
     payload: value,
-  }
-}
+  };
+};
 
-  export const filterTemperament = (value) => {
-    return {
-      type: FILTER_TEMPERAMENT,
-      payload: value,
-    }
+export const orderWeight = (value) => {
+  console.log(value)
+  return {
+    type: ORDER_WEIGHT,
+    payload: value,
+  };
+};
+
+export const filterTemperament = (value) => {
+  return {
+    type: FILTER_TEMPERAMENT,
+    payload: value,
+  };
 };
