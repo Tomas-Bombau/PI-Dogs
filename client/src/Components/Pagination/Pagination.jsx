@@ -9,7 +9,7 @@ const Pagination = ({ dogsPerPage, dogs, pagination, setCurrentPage, currentPage
   }
 
   return (
-    <nav>
+    <nav className={css.paginationContainer}>
       <ul>
         <a className={css.arrows} onClick={() => currentPage !== 1 ? setCurrentPage(currentPage - 1) : null}>
           <span> &#8592; </span>

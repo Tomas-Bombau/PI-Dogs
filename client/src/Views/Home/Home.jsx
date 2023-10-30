@@ -10,8 +10,7 @@ import Pagination from "../../Components/Pagination/Pagination";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(true);
-
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     dispatch(getDogs())

@@ -1,11 +1,11 @@
-.hola{
+.temperamentContainer{
     text-align: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
-span{
+.temperamentContainer span{
     color: white;
     margin: 5px;
     background-color: rgba(205, 40, 122, 0.7);

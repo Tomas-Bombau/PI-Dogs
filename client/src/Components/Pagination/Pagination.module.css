@@ -1,4 +1,4 @@
-ul{
+.paginationContainer ul{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,7 +6,7 @@ ul{
     gap: 5px;    
 }
 
-ul li{
+.paginationContainer  ul li{
     font-size: large;
     list-style-type: none;
     text-align: center;
@@ -17,12 +17,12 @@ ul li{
     border: 1px solid black;
 }
 
-li:hover{
+.paginationContainer  li:hover{
     cursor: pointer;
     transform: scale(1.2);
 }
 
-a:hover{
+.paginationContainer  a:hover{
     cursor: pointer;
 }
 

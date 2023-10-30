@@ -6,3 +6,9 @@
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
+.cardsContainer .link{
+    text-decoration: none;
+    color: white;
+} 
+

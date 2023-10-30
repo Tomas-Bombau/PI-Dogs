@@ -1,0 +1,81 @@
+.background{
+    height: 94vh;
+    background-image:url('../../assets/asd.avif');
+}
+
+.containerCard{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.containerCard h2{
+    margin-top: 70px;
+    width: 40%;
+    color: white;
+    text-align: center;
+    background-color: black;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.containerCard .containerImg{
+    width: 40%;
+    height: 500px;
+}
+
+.containerCard img{
+
+    border: 2px solid;
+}
+
+.containerCard .dogInformation{
+    color: white;
+    background-color: black;
+    padding: 20px;
+    border-radius: 0px 0px  20px 20px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    box-shadow: 2px 5px 5px rgba(205, 40, 122, 0.7);
+}
+
+.containerCard .hywInformation{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.containerCard .heightInformation{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+}
+
+.containerCard .weightInformation{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.containerCard .temperamentsInformation{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.containerCard .temperamentsInformation span{
+    background-color: rgba(205, 40, 122, 0.7);
+    border: 1px solid white;
+    padding: 20px;
+}
+
+.containerCard .temperamentsInformation span:hover{
+    transform: scale(1.02);
+}

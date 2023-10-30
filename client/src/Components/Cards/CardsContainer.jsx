@@ -12,7 +12,7 @@ const CardsContainer = (props) => {
             key={e.id} 
             id={e.id}
             reference_image_id={e.reference_image_id}
-            name={e.name}
+            name= {e.name}
             weightMin={e.weightMin}
             weightMax={e.weightMax}
             temperaments={e.temperaments}

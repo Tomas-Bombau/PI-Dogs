@@ -14,12 +14,12 @@ function App() {
 
   return (
     <div className="App">
-      {location.pathname !== "/"?  <NavBar /> : null}
+      {location.pathname !== "/" ?  <NavBar /> : null}
       <Routes>
         <Route path='/' Component={Landing}/>
         <Route path='/home' Component={Home}/>
         <Route path='/create' Component={Create}/>
-        <Route path='/detail:id' Component={Detail} />
+        <Route path='/detail/:id' Component={Detail} />
       </Routes>
     </div>
   );

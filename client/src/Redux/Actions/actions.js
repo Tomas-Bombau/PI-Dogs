@@ -6,6 +6,7 @@ import {
   FILTER_SOURCE,
   ORDER_NAME,
   ORDER_WEIGHT,
+  DOG_BY_ID,
 } from "./actionsTypes";
 import axios from "axios";
 
@@ -16,6 +17,21 @@ export const getDogs = () => {
       return dispatch({
         type: GET_DOGS,
         payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getDogById = (id) => {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(`http://localhost:3001/dogs/${id}`);
+      const data = response.data;
+      return dispatch({
+        type: DOG_BY_ID,
+        payload: data,
       });
     } catch (error) {
       console.log(error);

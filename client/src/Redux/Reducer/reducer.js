@@ -6,6 +6,7 @@ import {
   ORDER_NAME,
   ORDER_WEIGHT,
   FILTER_SOURCE,
+  DOG_BY_ID,
 } from "../Actions/actionsTypes";
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
   allDogsCopy: [],
   allTemperaments: [],
   dbDog: [],
+  dogId: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -23,6 +25,9 @@ const rootReducer = (state = initialState, action) => {
 
     case GET_TEMPERAMENTS:
       return { ...state, allTemperaments: action.payload };
+
+    case DOG_BY_ID:
+      return { ...state, dogId: action.payload };
 
     case SEARCH:
       return { ...state, allDogs: action.payload };
