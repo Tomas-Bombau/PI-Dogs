@@ -51,14 +51,14 @@ const Detail = () => {
             </h2>
           </div>
           <div className={css.dogInfo}>
-            <h3> Esperanza de vida promedio: {dogId?.life_span}</h3>
+            <p> <b>Esperanza de vida promedio:</b> {dogId?.life_span}</p>
             <div className={css.hywInformation}>
-              <h3>
-                Altura min: {dogId?.heightMin} - Altura max: {dogId?.heightMax}
-              </h3>
-              <h3>
-                Peso min: {dogId?.weightMin} - Peso max: {dogId?.weightMax}{" "}
-              </h3>
+              <p>
+              <b> Altura min:</b> {dogId?.heightMin} - <b> Altura max: </b> {dogId?.heightMax}
+              </p>
+              <p>
+                <b>Peso min:</b> {dogId?.weightMin} - <b>Peso max:</b> {dogId?.weightMax}{" "}
+              </p>
             </div>
             <p className={css.temperamentsInformation}>
               {dogId.temperaments?.map((temperament, index) => (

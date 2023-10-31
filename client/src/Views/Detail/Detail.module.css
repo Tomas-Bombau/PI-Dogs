@@ -43,14 +43,29 @@
 }
 
 .dogInfo{
-    margin: 10px 0px;
+    margin: 5px 0px;
     display: flex;
     flex-direction: column;
-    gap: 35px;
+    align-items: center;
+    gap: 20px;
 }
 
 .hywInformation{
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+.temperamentsInformation{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.temperamentsInformation span{
+    color: white;
+    background-color: rgba(205, 40, 122, 0.7);
+    border: 1px solid black;
+    border-radius: 10px 0px;
+    padding: 5px;
 }

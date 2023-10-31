@@ -11,7 +11,7 @@ const Cards = (props) => {
 
   return (
     <div className={css.cards}>
-      <Link className={css.link} to={`/detail/${id}`}><img className={css.imagen} src={detailImage} alt="" /></Link>
+      <Link className={css.link} to={`/detail/${id}`}><img className={css.imagen} src={detailImage} alt="access-to-details" /></Link>
       <img src={reference_image_id} alt="" />
       <h2>{name}</h2>
       <div className={css.weight}>

@@ -26,3 +26,7 @@
     cursor: pointer;
 }
 
+.paginationContainer ul a span{
+    font-size: 30px;
+  }
+
