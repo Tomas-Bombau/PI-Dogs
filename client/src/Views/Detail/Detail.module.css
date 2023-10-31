@@ -1,81 +1,56 @@
 .background{
-    height: 94vh;
-    background-image:url('../../assets/asd.avif');
+    height: calc(100vh - 60px);
+	background-color: rgba(201, 195, 195, 0.882);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.containerCard{
-    display: flex;
+.dogDetail{
+    padding: 40px;
+    position: relative;
+	display: grid;
+	grid-template-columns: 0.9fr 1fr;
+    width: 40%;
+    height: 40%;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 2px black;
+    background-color: white;
+}
+
+.img img{
+    position: absolute;
+    border-radius: 10px;
+    left: -3.5em;
+    width: 400px;
+    height: 300px;
+    border: 1px solid black;
+    box-shadow: 4px 4px 25px black;
+}
+
+.dogInformation{
+    padding: 10px 0px;
     width: 100%;
+    display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.containerCard h2{
-    margin-top: 70px;
-    width: 40%;
-    color: white;
-    text-align: center;
-    background-color: black;
-    border-radius: 20px 20px 0px 0px;
+.dogInformation span:hover{
+    cursor: pointer;
 }
 
-.containerCard .containerImg{
-    width: 40%;
-    height: 500px;
+.dogInfo{
+    margin: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
 }
 
-.containerCard img{
-
-    border: 2px solid;
-}
-
-.containerCard .dogInformation{
-    color: white;
-    background-color: black;
-    padding: 20px;
-    border-radius: 0px 0px  20px 20px;
-    width: 40%;
+.hywInformation{
     display: flex;
     flex-direction: column;
     gap: 20px;
-    align-items: center;
-    box-shadow: 2px 5px 5px rgba(205, 40, 122, 0.7);
-}
-
-.containerCard .hywInformation{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-}
-
-.containerCard .heightInformation{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 20px;
-}
-
-.containerCard .weightInformation{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
-.containerCard .temperamentsInformation{
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.containerCard .temperamentsInformation span{
-    background-color: rgba(205, 40, 122, 0.7);
-    border: 1px solid white;
-    padding: 20px;
-}
-
-.containerCard .temperamentsInformation span:hover{
-    transform: scale(1.02);
 }

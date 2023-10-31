@@ -22,7 +22,8 @@ const Home = () => {
 
 
   const dogs = useSelector((state) => state?.allDogs);
-  const temperaments = useSelector((state) => state?.allTemperaments);
+  const temperaments = useSelector((state) => state?.allTemperaments) 
+
   const [aux, setAux] = useState(true)
   const [currentPage, setCurrentPage] = useState(1);
   const [dogsPerPage, setDogsPerPage] = useState(8)

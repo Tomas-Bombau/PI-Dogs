@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
  
 
 const Cards = (props) => {
-  const { id, reference_image_id, weightMin, weightMax, name, temperaments } =
+  const { id, reference_image_id, weightMin, weightMax, name, temperaments} =
     props;
 
   return (
