@@ -7,6 +7,7 @@ import {
   ORDER_NAME,
   ORDER_WEIGHT,
   DOG_BY_ID,
+  POST,
 } from "./actionsTypes";
 import axios from "axios";
 
@@ -69,6 +70,16 @@ export const searchByName = (name) => {
       console.log(error);
     }
   };
+};
+
+export const postDog = (dog) => {
+  return async function (dispatch){
+    let data = await axios.post('http://localhost:3001/dogs/', dog)
+    return dispatch({
+        type: POST,
+        payload: data,
+    })
+  }
 };
 
 export const orderName = (value) => {

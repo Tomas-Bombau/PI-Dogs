@@ -6,36 +6,27 @@ import css from "./Detail.module.css";
 
 const Detail = () => {
   const params = useParams();
-  const id = params.id;
-  const detailId = Number(id);
+  const detailId = params.id;
   const dispatch = useDispatch();
-  const [aux, setAux] = useState(detailId);
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    dispatch(getDogById(detailId));
-  }, [detailId]);
+    dispatch(getDogById(detailId))
+    .then(() => {
+      setLoading(false); 
+    });;
+  }, []);
 
   const dogId = useSelector((state) => state?.dogId);
-  const dogs = useSelector((state) => state?.allDogs);
+  const dogIdCount = useSelector((state) => state?.dogIdCount);
 
-  const numberOfDogs = dogs.length
-  const lastId = dogs[numberOfDogs - 1].id
+  if (detailId.length === 36) {
+    dogId.id = `Perro creado n° ${dogIdCount}`
+  }
 
-
-  const handleClickForward = () => {
-    if(aux < lastId){
-    dispatch(getDogById(aux + 1));
-    setAux((aux) => aux + 1);
-    } 
-  };
-
-  const handleClickBackward = () => {
-    if (aux > 1) {
-      dispatch(getDogById(aux - 1));
-      setAux((aux) => aux - 1);
-    }
-  };
-
+  if (loading) {
+    return <div> Loading... </div>;
+  } 
 
   return (
     <section className={css.background}>
@@ -46,18 +37,22 @@ const Detail = () => {
         <div className={css.dogInformation}>
           <div>
             <h2>
-              <span onClick={handleClickBackward}> &#8592; </span> {dogId?.id}{" "}
-              {dogId?.name} <span onClick={handleClickForward}> &#8594; </span>
+              {dogId?.id} - {dogId?.name}
             </h2>
           </div>
           <div className={css.dogInfo}>
-            <p> <b>Esperanza de vida promedio:</b> {dogId?.life_span}</p>
+            <p>
+              {" "}
+              <b>Esperanza de vida promedio:</b> {dogId?.life_span}
+            </p>
             <div className={css.hywInformation}>
               <p>
-              <b> Altura min:</b> {dogId?.heightMin} - <b> Altura max: </b> {dogId?.heightMax}
+                <b> Altura min:</b> {dogId?.heightMin} - <b> Altura max: </b>{" "}
+                {dogId?.heightMax}
               </p>
               <p>
-                <b>Peso min:</b> {dogId?.weightMin} - <b>Peso max:</b> {dogId?.weightMax}{" "}
+                <b>Peso min:</b> {dogId?.weightMin} - <b>Peso max:</b>{" "}
+                {dogId?.weightMax}{" "}
               </p>
             </div>
             <p className={css.temperamentsInformation}>

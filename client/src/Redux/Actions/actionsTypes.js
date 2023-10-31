@@ -6,6 +6,7 @@ export const ORDER_NAME = "ORDER_NAME"
 export const ORDER_WEIGHT = "ORDER_WEIGHT"
 export const FILTER_SOURCE = "FILTER_SOURCE"
 export const DOG_BY_ID = "DOG_BY_ID"
+export const POST = "POST"
 
 
 
