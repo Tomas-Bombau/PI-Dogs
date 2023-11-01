@@ -34,7 +34,7 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, allDogs: action.payload };
 
     case ORDER_NAME:
-      const dogsName = state.allDogsCopy;
+      const dogsName = state.allDogs;
       const dogsByName =
         action.payload === "z-a"
           ? dogsName.sort((a, b) => {
@@ -62,7 +62,7 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, allDogs: dogsByName };
 
     case ORDER_WEIGHT:
-      const dogsWeight = state.allDogsCopy;
+      const dogsWeight = state.allDogs;
       const dogsByWeight =
         action.payload === "crec"
           ? dogsWeight.sort((a, b) =>

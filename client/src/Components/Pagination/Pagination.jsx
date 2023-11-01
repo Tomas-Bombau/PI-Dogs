@@ -22,7 +22,7 @@ const Pagination = ({
   return (
     <nav className={css.paginationContainer}>
       <ul>
-        <a href="/#"
+        <a 
           className={css.arrows}
           onClick={() =>
             currentPage !== 1 ? setCurrentPage(currentPage - 1) : null
@@ -34,12 +34,12 @@ const Pagination = ({
           pageNumbers.map((number, index) => {
             return (
               <li onClick={() => pagination(number)} key={index}>
-                <a href="/#"> {number} </a>
+                <a> {number} </a>
               </li>
             );
           })}
         <a
-          href="/#"
+          
           onClick={() =>
             currentPage !== numberOfPages
               ? setCurrentPage(currentPage + 1)
