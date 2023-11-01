@@ -23,6 +23,11 @@
     gap: 50px;
 }
 
+.navBar ul a:link {
+    color: white;
+    text-decoration: none;
+  }
+
 .navBar ul li{
     color: white;
     text-decoration: none;

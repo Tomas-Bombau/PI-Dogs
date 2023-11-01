@@ -1,12 +1,17 @@
 import React from "react";
+//Hooks
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterSource, filterTemperament, getDogs, getTemperaments, orderName, orderWeight } from "../../Redux/Actions/actions";
 import {Link} from 'react-router-dom'
+
+//Components and Functions
+import { filterSource, filterTemperament, getDogs, getTemperaments, orderName, orderWeight } from "../../Redux/Actions/actions";
 import CardsContainer from "../../Components/Cards/CardsContainer";
-import css from "./Home.module.css";
 import NoDogs from "../../Components/NoDogs/NoDogs"
 import Pagination from "../../Components/Pagination/Pagination";
+
+//CSS
+import css from "./Home.module.css";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -94,7 +99,7 @@ const Home = () => {
         </div>
       </section>
       <Pagination dogsPerPage={dogsPerPage} dogs={dogs.length} pagination={pagination} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
-      {dogs.length === 0 ? <NoDogs />: 
+      {dogs.length === 0 ? <NoDogs /> : 
       <CardsContainer dogs={currentDogs} />}
     </div>
   );

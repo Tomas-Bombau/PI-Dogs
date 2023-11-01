@@ -1,7 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { getDogById } from "../../Redux/Actions/actions";
+import React from "react";
+//Hooks
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+
+//Components and Functions
+import { getDogById } from "../../Redux/Actions/actions";
+
+//CSS
 import css from "./Detail.module.css";
 
 const Detail = () => {
@@ -15,13 +21,12 @@ const Detail = () => {
     .then(() => {
       setLoading(false); 
     });;
-  }, []);
+  }, [detailId, dispatch]);
 
   const dogId = useSelector((state) => state?.dogId);
-  const dogIdCount = useSelector((state) => state?.dogIdCount);
 
   if (detailId.length === 36) {
-    dogId.id = `Perro creado n° ${dogIdCount}`
+    dogId.id = "Nueva Raza"
   }
 
   if (loading) {

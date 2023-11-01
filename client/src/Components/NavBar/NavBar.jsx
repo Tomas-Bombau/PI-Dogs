@@ -18,7 +18,7 @@ const NavBar = () => {
   return (
     <nav className={css.navBar}>
       <ul>
-        <Link className={css.link} to='/home'><li>Home</li></Link>
+        <Link className={css.link} to='/home'><a href="#/"><li>Home</li></a></Link>
         <Link to='/create'><li>Create</li></Link>
         <li>Contactanos</li>
       </ul>

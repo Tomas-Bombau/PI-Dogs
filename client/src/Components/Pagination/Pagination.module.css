@@ -17,6 +17,16 @@
     border: 1px solid black;
 }
 
+
+.paginationContainer ul a:link {
+    text-decoration: none;
+  }
+
+  .paginationContainer ul a {
+    text-decoration: none;
+    color: white;
+  }
+
 .paginationContainer  li:hover{
     cursor: pointer;
     transform: scale(1.2);
@@ -28,5 +38,12 @@
 
 .paginationContainer ul a span{
     font-size: 30px;
+    color: black;
   }
 
+
+  .volverAHome{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }

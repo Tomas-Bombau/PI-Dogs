@@ -7,7 +7,6 @@ import {
   ORDER_WEIGHT,
   FILTER_SOURCE,
   DOG_BY_ID,
-  POST,
 } from "../Actions/actionsTypes";
 
 const initialState = {
@@ -101,9 +100,6 @@ const rootReducer = (state = initialState, action) => {
         const filteredDog = copyForSourceFilter.filter((dog) => !dog.createdInDb);
         return { ...state, allDogs: filteredDog };
       }
-
-    case POST:
-      return { ...state, dogIdCount: state.dogIdCount + 1};
 
     default:
       break;
