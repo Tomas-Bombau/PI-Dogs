@@ -2,7 +2,7 @@ const validation = (data) => {
   let errors = {};
 
   const pattern = /^\d+\s*-\s*\d+\s*$/;
-  const patternURL = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/
+  const patternURL = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/
 
   if (data.name.length > 0) {
     errors.name = "";
@@ -49,8 +49,10 @@ const validation = (data) => {
       "El promedio de vida debe ser escrito como en el ejemplo";
   }
 
-  if (data.temperaments.length >= 1) {
-    errors.chosenTemperaments = data.temperaments;
+  
+  if (!patternURL.test(data.reference_image_id)) {
+    errors.reference_image_id =
+      "Ingresar una URL";
   }
 
   return errors;

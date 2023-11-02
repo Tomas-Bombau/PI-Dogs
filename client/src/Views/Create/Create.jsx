@@ -6,8 +6,8 @@ import validationTemperaments from "./validationTemperaments";
 
 const Create = () => {
   const dispatch = useDispatch();
-
   const allTemperaments = useSelector((state) => state.allTemperaments);
+  const [buttonDisabled, setButtonDisabled] = useState(true);
   const [dog, setDog] = useState({
     reference_image_id: "",
     life_span: "",
@@ -21,9 +21,11 @@ const Create = () => {
 
   const [errors, setErrors] = useState({
     name: "Campo requerido",
+    life_span: "Campo requerido",
   });
 
   const [chosenTemperaments, setchosenTemperaments] = useState({});
+  const choices = chosenTemperaments?.choice;
 
   const formHandler = (event) => {
     let property = event.target.name;
@@ -41,12 +43,15 @@ const Create = () => {
         temperaments: [...dog.temperaments, temperamentChoice],
       })
     );
+    setButtonDisabled(false)
   };
+
+  console.log(dog);
 
   const submitForm = (event) => {
     event.preventDefault();
     dispatch(postDog(dog));
-    }
+  };
 
   return (
     <form onSubmit={submitForm} action="">
@@ -65,25 +70,23 @@ const Create = () => {
 
       {!errors.name && (
         <div>
-          <label htmlFor="">
-            {" "}
-            Altura Min (cm): </label>
-            <input
-              onChange={formHandler}
-              type="number"
-              name="heightMin"
-              required
-            />
+          <label htmlFor=""> Altura Min (cm): </label>
+          <input
+            onChange={formHandler}
+            type="number"
+            name="heightMin"
+            placeholder="0"
+            required
+          />
           {errors.heightMin && <p>{errors.heightMin}</p>}
-          <label htmlFor="">
-            {" "}
-            Altura Max (cm): </label>
-            <input
-              onChange={formHandler}
-              type="number"
-              name="heightMax"
-              required
-            />
+          <label htmlFor=""> Altura Max (cm): </label>
+          <input
+            onChange={formHandler}
+            type="number"
+            name="heightMax"
+            placeholder="0"
+            required
+          />
           {errors.heightMax && <p>{errors.heightMax}</p>}
         </div>
       )}
@@ -93,54 +96,98 @@ const Create = () => {
           <label htmlFor="">
             {" "}
             Peso Min:
-            <input onChange={formHandler} type="number" name="weightMin" />
+            <input
+              onChange={formHandler}
+              type="number"
+              name="weightMin"
+              placeholder="1"
+              required
+            />
             {errors.weightMin ? <p>{errors.weightMin}</p> : null}
           </label>
           <label htmlFor="">
             Peso Max:
-            <input onChange={formHandler} type="number" name="weightMax" />
+            <input
+              onChange={formHandler}
+              type="number"
+              name="weightMax"
+              placeholder="0"
+              required
+            />
             {errors.weightMax ? <p>{errors.weightMax}</p> : null}
           </label>
         </div>
       )}
 
-  {!errors.name && !errors.heightMin && !errors.heightMax && !errors.weightMin && !errors.weightMax && 
-      <label htmlFor="">
-        {" "}
-        Promedio de vida:
-        <input
-          onChange={formHandler}
-          type="text"
-          name="life_span"
-          placeholder="Ejemplo: 11 - 13 años"
-        />
-        {errors.life_span ? <p>{errors.life_span}</p> : null}
-      </label>
-}
-
-{/*
-      <label htmlFor="">
-        {" "}
-        Ingrese la url con la imagen del perro:
-        <input onChange={formHandler} type="url" name="reference_image_id" />
-        {errors.reference_image_id ? <p>{errors.reference_image_id}</p> : null}
-      </label>
-
-
-      <select onChange={temperamentsHandler} htmlFor="">
-        <option value=""> -- Elige las opciones que quieras-- </option>
-        {allTemperaments.map((temperament, index) => (
-          <option key={index} value={temperament}>
+      {!errors.name &&
+        !errors.heightMin &&
+        !errors.heightMax &&
+        !errors.weightMin &&
+        !errors.weightMax && (
+          <label htmlFor="">
             {" "}
-            {temperament}{" "}
-          </option>
-        ))}
-        {chosenTemperaments.choice ? (
-          <p> {chosenTemperaments.choice} </p>
-        ) : null}
-      </select> */}
+            Promedio de vida:
+            <input
+              onChange={formHandler}
+              type="text"
+              name="life_span"
+              placeholder="Ejemplo: 11 - 13 años"
+              required
+            />
+            {errors.life_span ? <p>{errors.life_span}</p> : null}
+          </label>
+        )}
 
-      <button>Enviar formulario</button>
+      {!errors.name &&
+        !errors.heightMin &&
+        !errors.heightMax &&
+        !errors.weightMin &&
+        !errors.weightMax &&
+        !errors.life_span && (
+          <label htmlFor="">
+            {" "}
+            Ingrese la url con la imagen del perro:
+            <input
+              onChange={formHandler}
+              type="url"
+              name="reference_image_id"
+              placeholder="https://www.ejemplo.com/"
+              required
+            />
+            {errors.reference_image_id ? (
+              <p>{errors.reference_image_id}</p>
+            ) : null}
+          </label>
+        )}
+
+      {!errors.name &&
+        !errors.heightMin &&
+        !errors.heightMax &&
+        !errors.weightMin &&
+        !errors.weightMax &&
+        !errors.life_span &&
+        !errors.reference_image_id && (
+          <select onChange={temperamentsHandler} htmlFor="" required>
+            <option value=""> -- Elige las opciones que quieras-- </option>
+            {allTemperaments.map((temperament, index) => (
+              <option key={index} value={temperament}>
+                {" "}
+                {temperament}{" "}
+              </option>
+            ))}
+          </select>
+        )}
+
+      {choices && (
+        <div>
+          Tus elecciones de temperamentos son las siguientes:
+          {choices.map((e) => (
+            <span> {e} </span>
+          ))}
+        </div>
+      )}
+
+      <button disabled={buttonDisabled}>Enviar formulario</button>
     </form>
   );
 };
