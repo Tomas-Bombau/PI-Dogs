@@ -1,43 +1,105 @@
 .background{
     width: 100%;
-    height: calc (100vh - 60px);
+    height: calc(100vh - 60px);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.formContainer{
-    width: 400px;
-    height: 600px;
+.formContent{
+    padding: 10px 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.formContainer{
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px 25px rgba(0, 0, 0, 0.2);
     background-image: url('../../assets/asd.jpg');
     background-repeat: no-repeat;
 }
 
-.formContainer .title{
-    text-align: center ;
+.formContent .title{
+    text-align: center;
 }
 
-.formContainer .alturaContainer{
+.formContent .altYPesoContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.formContent .alturaContainer{
     display: flex;
     flex-direction: row;
-
+    width: 100%;
 }
 
-.formContainer input{
+.formContent .pesoContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.formContent .promedioContainer{
+    text-align: center;
+}
+
+.temperamentChoice{
+    text-align: center;
+    font-weight: 600;
+}
+
+.temperamentsPosition{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    align-items: center;
+}
+
+
+.temperamentChoice span{
+    margin: 5px;
+    padding: 5px;
+    font-weight: 400;
+    border-radius: 5px;
+    background-color: rgba(205, 40, 122, 0.7);
+    box-shadow: 2px 2px 2px black;
+}
+
+.formContent input{
+    border: 2px solid black; 
+    margin-top: 5px;
+    padding: 5px 10px;
+    box-shadow: 0 0 5px black;
+    border-radius: 5px;
+}
+
+.formContent select{
     padding: 5px 10px;
     border-radius: 10px;
 }
 
-.formContainer label{
+.formContent label{
     font-weight: 600;
 }
 
-
-.formContainer p{
-    font-size: 10px;
+.formContent p{
+    font-size: 12px;
     font-weight: 0;
     color: red;
+}
+
+.formContent button{
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.formContent button:hover{
+    cursor: pointer;
 }

@@ -26,12 +26,15 @@ const Create = () => {
     temperaments: [],
   });
   const [errors, setErrors] = useState({
-    name: "Campo requerido",
+    name: " ",
+    heightMin: " ",
+    heightMax: " ",
+    weightMin: "",
+    weightMax: "",
     life_span: "Campo requerido",
   });
   const [chosenTemperaments, setchosenTemperaments] = useState({});
   const choices = chosenTemperaments?.choice;
-
   const allTemperaments = useSelector((state) => state.allTemperaments);
 
   const formHandler = (event) => {
@@ -61,142 +64,157 @@ const Create = () => {
   return (
     <section className={css.background}>
       <form className={css.formContainer} onSubmit={submitForm} action="">
-        <label className={css.title} htmlFor="">
-          {" "}
-          Nombre de raza
-          <div>
-          <input
-            onChange={formHandler}
-            type="text"
-            name="name"
-            placeholder="Ejemplo: Raza Retriever"
-            required
-          />
-          </div>
-        </label>
-        {errors.name ? <p>{errors.name}</p> : null}
-
-        {!errors.name && (
-          <div className={css.alturaContainer}>
-            <label htmlFor=""> Altura Min (cm): 
-            <input
-              onChange={formHandler}
-              type="number"
-              name="heightMin"
-              placeholder="0"
-              required
-            />
-            {errors.heightMin && <p>{errors.heightMin}</p>}
-            </label>
-            <label htmlFor=""> Altura Max (cm): x
-            <input
-              onChange={formHandler}
-              type="number"
-              name="heightMax"
-              placeholder="0"
-              required
-            />
-            {errors.heightMax && <p>{errors.heightMax}</p>}
-            </label>
-          </div>
-        )}
-
-        {!errors.name && !errors.heightMin & !errors.heightMax && (
-          <div>
+        <div className={css.formContent}>
+          <div className={css.title}>
             <label htmlFor="">
               {" "}
-              Peso Min:
-              <input
-                onChange={formHandler}
-                type="number"
-                name="weightMin"
-                placeholder="1"
-                required
-              />
-              {errors.weightMin ? <p>{errors.weightMin}</p> : null}
-            </label>
-            <label htmlFor="">
-              Peso Max:
-              <input
-                onChange={formHandler}
-                type="number"
-                name="weightMax"
-                placeholder="0"
-                required
-              />
-              {errors.weightMax ? <p>{errors.weightMax}</p> : null}
+              Nombre de raza
+              <div>
+                <input
+                  onChange={formHandler}
+                  type="text"
+                  name="name"
+                  placeholder="Ejemplo: Raza Retriever"
+                  required
+                />
+              </div>
+              {errors.name ? <p>{errors.name}</p> : null}
             </label>
           </div>
-        )}
-        {!errors.name &&
-          !errors.heightMin &&
-          !errors.heightMax &&
-          !errors.weightMin &&
-          !errors.weightMax && (
-            <label htmlFor="">
-              {" "}
-              Promedio de vida:
-              <input
-                onChange={formHandler}
-                type="text"
-                name="life_span"
-                placeholder="Ejemplo: 11 - 13 años"
-                required
-              />
-              {errors.life_span ? <p>{errors.life_span}</p> : null}
-            </label>
-          )}
 
-        {!errors.name &&
-          !errors.heightMin &&
-          !errors.heightMax &&
-          !errors.weightMin &&
-          !errors.weightMax &&
-          !errors.life_span && (
-            <label htmlFor="">
-              {" "}
-              Ingrese la url con la imagen del perro:
-              <input
-                onChange={formHandler}
-                type="url"
-                name="reference_image_id"
-                placeholder="https://www.ejemplo.com/"
-                required
-              />
-              {errors.reference_image_id ? (
-                <p>{errors.reference_image_id}</p>
-              ) : null}
-            </label>
-          )}
-
-        {!errors.name &&
-          !errors.heightMin &&
-          !errors.heightMax &&
-          !errors.weightMin &&
-          !errors.weightMax &&
-          !errors.life_span &&
-          !errors.reference_image_id && (
-            <select onChange={temperamentsHandler} htmlFor="" required>
-              <option value=""> -- Elige las opciones que quieras-- </option>
-              {allTemperaments.map((temperament, index) => (
-                <option key={index} value={temperament}>
+          {!errors.name && (
+            <div className={css.altYPesoContainer}>
+              <div className={css.alturaContainer}>
+                <label htmlFor="">
                   {" "}
-                  {temperament}{" "}
-                </option>
-              ))}
-            </select>
+                  Altura Min (cm):
+                  <input
+                    onChange={formHandler}
+                    type="number"
+                    name="heightMin"
+                    placeholder="0"
+                    required
+                  />
+                  {errors.heightMin && <p>{errors.heightMin}</p>}
+                </label>
+                <label htmlFor="">
+                  {" "}
+                  Altura Max (cm):
+                  <input
+                    onChange={formHandler}
+                    type="number"
+                    name="heightMax"
+                    placeholder="0"
+                    required
+                  />
+                  {errors.heightMax && <p>{errors.heightMax}</p>}
+                </label>
+              </div>
+              <div className={css.pesoContainer}>
+                <label htmlFor="">
+                  {" "}
+                  Peso Min:
+                  <input
+                    onChange={formHandler}
+                    type="number"
+                    name="weightMin"
+                    placeholder="1"
+                    required
+                  />
+                  {errors.weightMin ? <p>{errors.weightMin}</p> : null}
+                </label>
+                <label htmlFor="">
+                  Peso Max:
+                  <input
+                    onChange={formHandler}
+                    type="number"
+                    name="weightMax"
+                    placeholder="0"
+                    required
+                  />
+                  {errors.weightMax ? <p>{errors.weightMax}</p> : null}
+                </label>
+              </div>
+            </div>
           )}
 
-        {choices && (
-          <div>
-            Tus elecciones de temperamentos son las siguientes:
-            {choices.map((e) => (
-              <span> {e} </span>
-            ))}
-          </div>
-        )}
+          {!errors.name &&
+            !errors.heightMin &&
+            !errors.heightMax &&
+            !errors.weightMin &&
+            !errors.weightMax && (
+              <div className={css.promedioContainer}>
+                <label htmlFor="">
+                  Promedio de vida
+                  <div>
+                    <input
+                      onChange={formHandler}
+                      type="text"
+                      name="life_span"
+                      placeholder="Ejemplo: 11 - 13"
+                      required
+                    />
+                  </div>
+                  {errors.life_span ? <p>{errors.life_span}</p> : null}
+                </label>
+              </div>
+            )}
 
-        <button disabled={buttonDisabled}>Enviar formulario</button>
+          {!errors.name &&
+            !errors.heightMin &&
+            !errors.heightMax &&
+            !errors.weightMin &&
+            !errors.weightMax &&
+            !errors.life_span && (
+              <div className={css.promedioContainer}>
+                <label htmlFor="">
+                  {" "}
+                  Ingrese la url con la imagen del perro
+                  <input
+                    onChange={formHandler}
+                    type="url"
+                    name="reference_image_id"
+                    placeholder="https://www.ejemplo.com/"
+                    required
+                  />
+                  {errors.reference_image_id ? (
+                    <p>{errors.reference_image_id}</p>
+                  ) : null}
+                </label>
+              </div>
+            )}
+
+          {!errors.name &&
+            !errors.heightMin &&
+            !errors.heightMax &&
+            !errors.weightMin &&
+            !errors.weightMax &&
+            !errors.life_span &&
+            !errors.reference_image_id && (
+              <select onChange={temperamentsHandler} htmlFor="" required>
+                <option value=""> -- Elige las opciones que quieras-- </option>
+                {allTemperaments.map((temperament, index) => (
+                  <option key={index} value={temperament}>
+                    {" "}
+                    {temperament}{" "}
+                  </option>
+                ))}
+              </select>
+            )}
+
+          {choices && (
+            <div className={css.temperamentChoice}>
+              Tus elecciones de temperamentos son las siguientes:
+              <div className={css.temperamentsPosition}>
+                {choices.map((e) => (
+                  <span> {e} </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <button disabled={buttonDisabled}>Enviar formulario</button>
+        </div>
       </form>
     </section>
   );

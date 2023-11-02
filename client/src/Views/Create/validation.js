@@ -13,41 +13,38 @@ const validation = (data) => {
     errors.name = "Nombre demasiado largo";
   }
 
-  if (data.heightMin < 5) {
+  if (data.heightMin < 5 && data.heightMin >= 1) {
     errors.heightMin =
-      "Campo requerido. La raza debe medir más de 5cm. No existen razas de perro tan chicas.";
+      "La raza debe medir más de 5cm";
   }
 
   if (data.heightMin > 1100) {
     errors.heightMin =
-    "La raza no puede medir más de 1100cm. No existen perros tan grandes. Googlea el record de Zeus 🐶 ";
+    "La raza no puede medir más de 1100cm";
   }
 
-  if (Number(data.heightMax) === 0) {
-    errors.heightMax = "Campo requerido";
-  }
-
+  
   if (data.heightMax > 1100) {
     errors.heightMax =
-      "La raza no puede medir más de 1100cm. No existen perros tan grandes. Googlea el record de Zeus 🐶 ";
+      "La raza no puede medir más de 1100cm";
   }
 
   if (Number(data.weightMin) === 0) {
-    errors.weightMin = "Campo requerido. No puede ser 0";
+    errors.weightMin = " ";
   }
 
   if (Number(data.weightMax) === 0) {
-    errors.weightMax = "Campo requerido";
+    errors.weightMax = " ";
   }
 
   if (data.weightMin > 110) {
     errors.weightMin =
-      "La raza debe pesar maximo 110kg. No existen perros que hayan superado ese número.";
+      "La raza debe pesar maximo 110kg";
   }
 
   if (data.weightMax > 110) {
     errors.weightMax =
-      "La raza debe pesar maximo 110kg. No existen perros que hayan superado ese número.";
+      "La raza debe pesar maximo 110kg";
   }
 
   if (!pattern.test(data.life_span)) {
