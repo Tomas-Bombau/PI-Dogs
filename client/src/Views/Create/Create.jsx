@@ -46,7 +46,6 @@ const Create = () => {
     setButtonDisabled(false)
   };
 
-  console.log(dog);
 
   const submitForm = (event) => {
     event.preventDefault();
