@@ -1,3 +1,7 @@
+.paginationContainer{
+  background-color: white;
+}
+
 .paginationContainer ul{
     display: flex;
     justify-content: center;

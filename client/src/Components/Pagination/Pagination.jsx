@@ -16,11 +16,8 @@ const Pagination = ({
     pageNumbers.push(i);
   }
   
-
-
-
   return (
-    <nav className={css.paginationContainer}>
+    <section className={css.paginationContainer}>
       <ul>
         <a 
           className={css.arrows}
@@ -49,7 +46,7 @@ const Pagination = ({
           <span>&#8702;</span>
         </a>
       </ul>
-    </nav>
+    </section>
   );
 };
 

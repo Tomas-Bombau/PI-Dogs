@@ -1,39 +1,110 @@
-.navBar{
-    top: 0px;
+
+nav{
     width: 100%;
-    height: 30px;
-    margin: 0px auto;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    flex-wrap: wrap;
     align-items: center;
-    padding: 30px 0px;
+    padding: 10px 0px;
     background-color: #291D1F;
 }
 
-.navBar input{
-    width: 20%;
-    padding: 5px 10px;
+nav h2{
+    color: white;
+    opacity: 0;
+    animation: fadeIn 5s 1s ease forwards ;
 }
 
-.navBar ul{
+nav ul{
     display: flex;
     flex-direction: row;
     list-style: none;
     gap: 50px;
 }
 
-.navBar ul a:link {
-    color: white;
-    text-decoration: none;
-  }
+nav ul li{
+    list-style: none;
+}
 
-.navBar ul li{
+nav ul li a{
+    display: block;
     color: white;
     text-decoration: none;
 }
 
-.navBar ul li:hover{
+nav ul li:hover{
     cursor: pointer;
 }
 
+nav .enterBreed input{
+    padding: 5px 50px;
+}
+
+nav .menu{
+    display: none;
+    position: absolute;
+    top: 7px;
+    right: 10px;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 36px;
+    height: 32px;
+}
+
+@media (max-width: 480px){
+    nav .menu{
+        display: flex;
+    }
+
+    nav h2{
+        display: none;
+    }
+
+    nav{
+        flex-direction: column-reverse;
+    }
+
+    nav input{
+        padding: 10px 100px;
+        color: black;
+    }
+
+    nav ul{
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 0px;
+    }
+
+    nav ul.open{
+        display: flex;
+    }
+
+    nav ul li{
+        width: 100%;
+        text-align: center;
+        z-index: 1;
+    }
+
+    nav ul li a{
+        margin: 2px 2px;
+    }
+
+    nav ul li a:hover{
+        background-color:  rgba(205, 40, 122);
+    }
+}
+
+nav .menu span{
+    height: 8px;
+    width: 100%;
+    background-color: white;
+    border-radius: 2px;
+}
+
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
