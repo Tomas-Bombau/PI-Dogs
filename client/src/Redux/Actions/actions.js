@@ -8,6 +8,7 @@ import {
   ORDER_WEIGHT,
   DOG_BY_ID,
   POST,
+  ERRORS,
 } from "./actionsTypes";
 import axios from "axios";
 
@@ -20,7 +21,10 @@ export const getDogs = () => {
         payload: response.data,
       });
     } catch (error) {
-      console.log(error);
+      return dispatch({
+        type: ERRORS,
+        payload: error,
+      });
     }
   };
 };
@@ -49,7 +53,7 @@ export const getTemperaments = () => {
         type: GET_TEMPERAMENTS,
         payload: data,
       });
-    } catch (error) {
+    }catch (error) {
       console.log(error);
     }
   };
@@ -73,13 +77,13 @@ export const searchByName = (name) => {
 };
 
 export const postDog = (dog) => {
-  return async function (dispatch){
-    let data = await axios.post('http://localhost:3001/dogs/', dog)
+  return async function (dispatch) {
+    let data = await axios.post("http://localhost:3001/dogs/", dog);
     return dispatch({
-        type: POST,
-        payload: data,
-    })
-  }
+      type: POST,
+      payload: data,
+    });
+  };
 };
 
 export const orderName = (value) => {
@@ -90,7 +94,7 @@ export const orderName = (value) => {
 };
 
 export const orderWeight = (value) => {
-  console.log(value)
+  console.log(value);
   return {
     type: ORDER_WEIGHT,
     payload: value,
@@ -102,11 +106,11 @@ export const filterTemperament = (value) => {
     type: FILTER_TEMPERAMENT,
     payload: value,
   };
-}
+};
 
-  export const filterSource = (value) => {
-    return {
-      type: FILTER_SOURCE,
-      payload: value,
-    };
+export const filterSource = (value) => {
+  return {
+    type: FILTER_SOURCE,
+    payload: value,
+  };
 };
