@@ -19,6 +19,7 @@ import Pagination from "../../Components/Pagination/Pagination";
 
 //CSS
 import css from "./Home.module.css";
+import headerImage from "../../assets/home-header.webp";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -82,19 +83,30 @@ const Home = () => {
 
   if (errors.message) {
     return (
-        <div className={css.errors}> We are sorry: {errors.message} <Link to='/'><button> Go back </button></Link></div>
+      <div className={css.errors}>
+        {" "}
+        We are sorry: {errors.message}{" "}
+        <Link to="/">
+          <button> Go back </button>
+        </Link>
+      </div>
     );
   }
 
   return (
     <div>
       <section className={css.homeContainer}>
-        <h1>Bienvenidos al mundo de los perros!</h1>
-        <div>
-          <Link to="/create">
-            <button>Crear perro</button>
-          </Link>
-          <button onClick={handleReaload}>Recargar perros</button>
+        <div className={css.headerImage}>
+          <img src={headerImage} alt="image-dog-sleep" />
+          <h1>Bienvenidos al mundo de los perros!</h1>
+          <div>
+            <Link to="/create">
+              <button> Crear Raza</button>
+            </Link>
+          </div>
+        </div>
+        <div className={css.options}>
+          <button onClick={handleReaload}>Recargar perros </button>
           <select name="order" onChange={handleOrder}>
             <option value="a-z"> Perros A - Z </option>
             <option value="z-a"> Perros Z - A </option>
@@ -123,11 +135,9 @@ const Home = () => {
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
-      {!errors && dogs.length === 0 ? (
-        <NoDogs />
-      ) : (
-        <CardsContainer dogs={currentDogs} />
-      )}
+      {dogs.length === 0 ? <NoDogs /> : <CardsContainer dogs={currentDogs} />}
+
+      {errors ? null : null}
     </div>
   );
 };

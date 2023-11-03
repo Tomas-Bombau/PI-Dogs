@@ -1,11 +1,10 @@
 .cards{
-    color: white;
+    color: black;
     width: 300px;
     margin-top: 20px;
     overflow: hidden;
     border-radius: 20px;
-    background-color: #291D1F;
-    box-shadow: 2px 2px 10px #291D1F;
+    box-shadow: 4px 4px 10px #291D1F;
     position: relative;
 }
 

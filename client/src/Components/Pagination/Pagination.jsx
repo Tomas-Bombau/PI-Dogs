@@ -10,16 +10,18 @@ const Pagination = ({
   const pageNumbers = [];
   const numberOfPages = Math.ceil(dogs / dogsPerPage);
 
-  if(numberOfPages === 0){return <div></div>}
+  if (numberOfPages === 0) {
+    return <div></div>;
+  }
 
   for (let i = 1; i <= numberOfPages; i++) {
     pageNumbers.push(i);
   }
-  
+
   return (
     <section className={css.paginationContainer}>
       <ul>
-        <a 
+        <a
           className={css.arrows}
           onClick={() =>
             currentPage !== 1 ? setCurrentPage(currentPage - 1) : null
@@ -36,7 +38,6 @@ const Pagination = ({
             );
           })}
         <a
-          
           onClick={() =>
             currentPage !== numberOfPages
               ? setCurrentPage(currentPage + 1)
