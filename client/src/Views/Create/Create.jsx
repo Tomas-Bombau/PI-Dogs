@@ -33,8 +33,8 @@ const Create = () => {
     weightMax: "",
     life_span: "Campo requerido",
   });
-  const [chosenTemperaments, setchosenTemperaments] = useState({});
-  const choices = chosenTemperaments?.choice;
+  const [chosenTemperaments, setchosenTemperaments] = useState();
+  const [count, setCount] = useState(1);
   const allTemperaments = useSelector((state) => state.allTemperaments);
 
   const formHandler = (event) => {
@@ -46,20 +46,48 @@ const Create = () => {
 
   const temperamentsHandler = (event) => {
     const temperamentChoice = event.target.value;
-    setDog({ ...dog, temperaments: [...dog.temperaments, temperamentChoice] });
-    setchosenTemperaments(
-      validationTemperaments({
+    if (count <= 10) {
+      setDog({
         ...dog,
         temperaments: [...dog.temperaments, temperamentChoice],
-      })
-    );
+      });
+      setchosenTemperaments(
+        validationTemperaments({
+          ...dog,
+          temperaments: [...dog.temperaments, temperamentChoice],
+        })
+      );
+      setCount(count + 1); // ONLY 10 TEMPERAMENTS ALLOW
+    }
     setButtonDisabled(false);
   };
 
   const submitForm = (event) => {
     event.preventDefault();
     dispatch(postDog(dog));
-  };
+    setDog({
+      reference_image_id: "",
+      life_span: "",
+      name: "",
+      weightMin: "",
+      weightMax: "",
+      heightMin: "",
+      heightMax: "",
+      temperaments: [],
+  })}
+
+  const reset = () => {
+    setDog({
+      reference_image_id: "",
+      life_span: "",
+      name: "",
+      weightMin: "",
+      weightMax: "",
+      heightMin: "",
+      heightMax: "",
+      temperaments: [],
+  })
+  }
 
   return (
     <section className={css.background}>
@@ -74,6 +102,7 @@ const Create = () => {
                   onChange={formHandler}
                   type="text"
                   name="name"
+                  value={dog.name}
                   placeholder="Ejemplo: Raza Retriever"
                   required
                 />
@@ -93,6 +122,7 @@ const Create = () => {
                     type="number"
                     name="heightMin"
                     placeholder="0"
+                    value={dog.heightMin}
                     required
                   />
                   {errors.heightMin && <p>{errors.heightMin}</p>}
@@ -105,6 +135,7 @@ const Create = () => {
                     type="number"
                     name="heightMax"
                     placeholder="0"
+                    value={dog.heightMax}
                     required
                   />
                   {errors.heightMax && <p>{errors.heightMax}</p>}
@@ -119,6 +150,7 @@ const Create = () => {
                     type="number"
                     name="weightMin"
                     placeholder="1"
+                    value={dog.weightMin}
                     required
                   />
                   {errors.weightMin ? <p>{errors.weightMin}</p> : null}
@@ -130,6 +162,7 @@ const Create = () => {
                     type="number"
                     name="weightMax"
                     placeholder="0"
+                    value={dog.weightMax}
                     required
                   />
                   {errors.weightMax ? <p>{errors.weightMax}</p> : null}
@@ -152,6 +185,7 @@ const Create = () => {
                       type="text"
                       name="life_span"
                       placeholder="Ejemplo: 11 - 13"
+                      value={dog.life_span}
                       required
                     />
                   </div>
@@ -175,6 +209,7 @@ const Create = () => {
                     type="url"
                     name="reference_image_id"
                     placeholder="https://www.ejemplo.com/"
+                    value={dog.reference_image_id}
                     required
                   />
                   {errors.reference_image_id ? (
@@ -202,18 +237,25 @@ const Create = () => {
               </select>
             )}
 
-          {choices && (
+          {chosenTemperaments && dog.temperaments.length != 0 && (
             <div className={css.temperamentChoice}>
               Tus elecciones de temperamentos son las siguientes:
               <div className={css.temperamentsPosition}>
-                {choices.map((e) => (
-                  <span> {e} </span>
+                {chosenTemperaments.map((e, index) => (
+                  <span key={index}> {e} </span>
                 ))}
+              </div>
+              <div>
+                {count == 11 && (
+                  <p> Sólo se permiten seleccionar 10 temperamentos por raza</p>
+                )}
               </div>
             </div>
           )}
-
-          <button disabled={buttonDisabled}>Enviar formulario</button>
+          <div className={css.buttonContainer}>
+            <button type="button" onClick={reset}> Limpiar campos </button>
+            <button type="submit" disabled={buttonDisabled}>Enviar formulario</button>
+          </div>
         </div>
       </form>
     </section>

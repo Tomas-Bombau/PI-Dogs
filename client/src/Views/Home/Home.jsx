@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 //Hooks
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -97,7 +97,7 @@ const Home = () => {
     <div>
       <section className={css.homeContainer}>
         <div className={css.headerImage}>
-          <img src={headerImage} alt="image-dog-sleep" />
+          <img src={headerImage} alt="dog-sleep" />
           <h1>Bienvenidos al mundo de los perros!</h1>
           <div>
             <Link to="/create">
