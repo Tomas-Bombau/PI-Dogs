@@ -27,11 +27,12 @@ const Create = () => {
   });
   const [errors, setErrors] = useState({
     name: " ",
-    heightMin: " ",
-    heightMax: " ",
+    heightMin: "",
+    heightMax: "",
     weightMin: "",
     weightMax: "",
-    life_span: "Campo requerido",
+    life_span: "",  
+    reference_image_id: "",
   });
   const [chosenTemperaments, setchosenTemperaments] = useState();
   const [count, setCount] = useState(1);
@@ -87,7 +88,13 @@ const Create = () => {
       heightMax: "",
       temperaments: [],
   })
+    setCount(1)
   }
+
+  // const handlerDelete = (index) => {
+  //   setchosenTemperaments(chosenTemperaments.filter((e) => e.key == index))
+  //   console.log(chosenTemperaments)
+  // }
 
   return (
     <section className={css.background}>
@@ -117,6 +124,7 @@ const Create = () => {
                 <label htmlFor="">
                   {" "}
                   Altura Min (cm):
+                  <div>
                   <input
                     onChange={formHandler}
                     type="number"
@@ -126,10 +134,12 @@ const Create = () => {
                     required
                   />
                   {errors.heightMin && <p>{errors.heightMin}</p>}
+                  </div>
                 </label>
                 <label htmlFor="">
                   {" "}
                   Altura Max (cm):
+                  <div>
                   <input
                     onChange={formHandler}
                     type="number"
@@ -138,13 +148,16 @@ const Create = () => {
                     value={dog.heightMax}
                     required
                   />
+                  </div>
                   {errors.heightMax && <p>{errors.heightMax}</p>}
                 </label>
+                
               </div>
               <div className={css.pesoContainer}>
                 <label htmlFor="">
                   {" "}
                   Peso Min:
+                  <div>
                   <input
                     onChange={formHandler}
                     type="number"
@@ -153,10 +166,12 @@ const Create = () => {
                     value={dog.weightMin}
                     required
                   />
-                  {errors.weightMin ? <p>{errors.weightMin}</p> : null}
+                  {errors.weightMin && <p>{errors.weightMin}</p>}
+                  </div>
                 </label>
                 <label htmlFor="">
                   Peso Max:
+                  <div>
                   <input
                     onChange={formHandler}
                     type="number"
@@ -165,7 +180,8 @@ const Create = () => {
                     value={dog.weightMax}
                     required
                   />
-                  {errors.weightMax ? <p>{errors.weightMax}</p> : null}
+                  {errors.weightMax  && <p>{errors.weightMax}</p>}
+                  </div>
                 </label>
               </div>
             </div>
@@ -204,6 +220,7 @@ const Create = () => {
                 <label htmlFor="">
                   {" "}
                   Ingrese la url con la imagen del perro
+                  <div>
                   <input
                     onChange={formHandler}
                     type="url"
@@ -215,6 +232,7 @@ const Create = () => {
                   {errors.reference_image_id ? (
                     <p>{errors.reference_image_id}</p>
                   ) : null}
+                  </div>
                 </label>
               </div>
             )}
@@ -237,16 +255,16 @@ const Create = () => {
               </select>
             )}
 
-          {chosenTemperaments && dog.temperaments.length != 0 && (
+          {chosenTemperaments && dog.temperaments.length !== 0 && (
             <div className={css.temperamentChoice}>
               Tus elecciones de temperamentos son las siguientes:
               <div className={css.temperamentsPosition}>
                 {chosenTemperaments.map((e, index) => (
-                  <span key={index}> {e} </span>
+                  <div key={index} className={css.temperamentsCards}> {e} <span className={css.delete}>x</span></div> //onClick={handlerDelete}
                 ))}
               </div>
-              <div>
-                {count == 11 && (
+              <div className={css.temperamentsPositionError}>
+                {count === 11 && (
                   <p> Sólo se permiten seleccionar 10 temperamentos por raza</p>
                 )}
               </div>

@@ -6,6 +6,16 @@
     align-items: center;
 }
 
+.formContainer{
+    width: 500px;
+    height: 650px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px 25px rgba(0, 0, 0, 0.2);
+    background-image: url('../../assets/form-image.jpg');
+    background-repeat: no-repeat;
+    padding: 3px;
+}
+
 .formContent{
     padding: 10px 0px;
     display: flex;
@@ -13,15 +23,6 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
-}
-
-.formContainer{
-    width: 400px;
-    height: 600px;
-    border-radius: 10px;
-    box-shadow: 0px 5px 15px 25px rgba(0, 0, 0, 0.2);
-    background-image: url('../../assets/asd.jpg');
-    background-repeat: no-repeat;
 }
 
 .formContent .title{
@@ -32,19 +33,23 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 30px;
 }
 
 .formContent .alturaContainer{
     display: flex;
     flex-direction: row;
     width: 100%;
+    gap: 20px;
+    text-align: center;
 }
 
 .formContent .pesoContainer{
     display: flex;
     flex-direction: row;
     width: 100%;
+    gap: 20px;
+    text-align: center;
 }
 
 .formContent .promedioContainer{
@@ -60,18 +65,31 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content:flex-start;
+    justify-content:stretch;
     align-items: center;
+    gap: 10px;
 }
 
 
-.temperamentChoice span{
-    margin: 5px;
-    padding: 5px;
+.temperamentsCards{
+    margin: 5px auto;
+    padding: 5px 10px;
     font-weight: 400;
     border-radius: 5px;
     background-color: rgba(205, 40, 122, 0.7);
     box-shadow: 2px 2px 2px black;
+    position: relative;
+}
+
+.delete{
+    background-color: rgba(205, 40, 122, 0.1);
+    position: absolute;
+    top: 2;
+    transform: translate(-0%, -50%);
+}
+
+.delete:hover{
+    cursor: pointer;
 }
 
 .formContent input{
@@ -92,9 +110,16 @@
 }
 
 .formContent p{
+    width: 200px;
     font-size: 14px;
     font-weight: 0;
     color: red;
+}
+
+.formContent .temperamentsPositionError p{
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
 }
 
 .formContent button{
@@ -110,4 +135,28 @@
     display: flex;
     justify-content: center;
     gap: 20px;
+}
+
+@media (max-width:400px) {
+
+    .formContainer{
+        width: 300px;
+        height: 750px;
+    }
+
+    .formContent .alturaContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .formContent .pesoContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
 }
