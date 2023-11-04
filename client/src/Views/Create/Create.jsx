@@ -91,10 +91,12 @@ const Create = () => {
     setCount(1)
   }
 
-  // const handlerDelete = (index) => {
-  //   setchosenTemperaments(chosenTemperaments.filter((e) => e.key == index))
-  //   console.log(chosenTemperaments)
-  // }
+  const handlerDelete = (index) => {
+    const filteredTemperaments = chosenTemperaments.filter(e => chosenTemperaments.indexOf(e) !== index)
+    setDog({...dog, temperaments: filteredTemperaments})
+    setchosenTemperaments(filteredTemperaments)
+    setCount(count - 1)
+  }
 
   return (
     <section className={css.background}>
@@ -260,7 +262,7 @@ const Create = () => {
               Tus elecciones de temperamentos son las siguientes:
               <div className={css.temperamentsPosition}>
                 {chosenTemperaments.map((e, index) => (
-                  <div key={index} className={css.temperamentsCards}> {e} <span className={css.delete}>x</span></div> //onClick={handlerDelete}
+                  <div key={index} className={css.temperamentsCards}> {e} <span onClick={() => handlerDelete(index)} className={css.delete}>x</span></div> //
                 ))}
               </div>
               <div className={css.temperamentsPositionError}>
