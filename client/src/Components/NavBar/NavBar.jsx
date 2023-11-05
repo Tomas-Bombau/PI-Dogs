@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import css from "./NavBar.module.css";
 import { useDispatch } from "react-redux";
-import { searchByName } from "../../Redux/Actions/actions";
+import { resetErrorID, searchByName } from "../../Redux/Actions/actions";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
@@ -15,6 +15,10 @@ const NavBar = () => {
     setName(nameEntered);
     dispatch(searchByName(nameEntered));
   };
+
+  const clickResetErrorID = () => {
+    dispatch(resetErrorID())
+  }
 
   return (
     <nav>
@@ -32,7 +36,7 @@ const NavBar = () => {
       </div>
       <ul className={menu ? css.open : ""}>
         <li>
-          <Link to="/home">Home</Link>
+          <Link onClick={clickResetErrorID} to="/home">Home</Link>
         </li>
         <li>
           <Link to="/create">Crear raza</Link>

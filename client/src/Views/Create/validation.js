@@ -50,7 +50,7 @@ const validation = (data) => {
       "El promedio de vida debe ser escrito como en el ejemplo";
   } else if (data.life_span.length === 0) {
     errors.life_span = " ";
-  } else if (maxAge <= minAge) {
+  } else if (maxAge < minAge) {
     errors.life_span =
       "El primer número no puede ser mayor al segundo";
   } else {

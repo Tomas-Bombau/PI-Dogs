@@ -36,7 +36,7 @@ const Detail = () => {
   } 
 
   if(errorID.message){
-    return <Errors error={errorID.message} /> //o hardcodear "la raza con ID provista no se ha encontrado"
+    return <Errors error={"la raza con ID provista no se ha encontrado"} /> 
   }
 
   return (

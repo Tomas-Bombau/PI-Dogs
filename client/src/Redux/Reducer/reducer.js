@@ -9,7 +9,8 @@ import {
   DOG_BY_ID,
   ERRORS_GET,
   ERRORS_ID,
-  RESET_ERRORS
+  RESET_ERRORS,
+  RESET_ERRORS_ID,
 } from "../Actions/actionsTypes";
 
 const initialState = {
@@ -34,6 +35,9 @@ const rootReducer = (state = initialState, action) => {
 
     case RESET_ERRORS:
       return { ...state, errors_id: {}, errors_get: {}};
+
+    case RESET_ERRORS_ID:
+      return { ...state, errors_id: {}};
 
     case GET_DOGS:
       const db = action.payload.filter((dog) => dog.createdInDb === true)

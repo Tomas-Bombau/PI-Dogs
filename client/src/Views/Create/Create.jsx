@@ -11,10 +11,13 @@ import validationTemperaments from "./validationTemperaments";
 
 //
 import css from "./Create.module.css";
+import Errors from "../../Components/Errors/Errors";
 
 const Create = () => {
   const dispatch = useDispatch();
   const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [responseMessage, setResponseMessage] = useState(null);
+  const [responseError, setResponseError] = useState(null);
   const [dog, setDog] = useState({
     reference_image_id: "",
     life_span: "",
@@ -25,7 +28,7 @@ const Create = () => {
     heightMax: "",
     temperaments: [],
   });
-  const [errors, setErrors] = useState({
+  const [errorValidation, setErrorValidation] = useState({
     name: " ",
     heightMin: "",
     heightMax: "",
@@ -42,7 +45,7 @@ const Create = () => {
     let property = event.target.name;
     let value = event.target.value;
     setDog({ ...dog, [property]: value });
-    setErrors(validation({ ...dog, [property]: value }));
+    setErrorValidation(validation({ ...dog, [property]: value }));
   };
 
   const temperamentsHandler = (event) => {
@@ -63,9 +66,11 @@ const Create = () => {
     setButtonDisabled(false);
   };
 
-  const submitForm = (event) => {
+  const submitForm = async (event) => {
     event.preventDefault();
-    dispatch(postDog(dog));
+    try{
+    const response = await dispatch(postDog(dog));
+    setResponseMessage(response.payload.data); // Set the response message in the state
     setDog({
       reference_image_id: "",
       life_span: "",
@@ -75,7 +80,11 @@ const Create = () => {
       heightMin: "",
       heightMax: "",
       temperaments: [],
-    });
+    })
+    }
+    catch (error) {
+      setResponseError(error.response.data.error);
+    }
   };
 
   const reset = () => {
@@ -101,6 +110,14 @@ const Create = () => {
     setCount(count - 1);
   };
 
+  if(responseMessage){
+    return <div>{responseMessage}</div>
+  }
+
+  if(responseError){
+    return <Errors error={responseError} />
+  }
+
   return (
     <section className={css.background}>
       <form className={css.formContainer} onSubmit={submitForm} action="">
@@ -118,11 +135,11 @@ const Create = () => {
                   required
                 />
               </div>
-              {errors.name ? <p>{errors.name}</p> : null}
+              {errorValidation.name ? <p>{errorValidation.name}</p> : null}
             </label>
           </div>
 
-          {!errors.name && (
+          {!errorValidation.name && (
             <div className={css.altYPesoContainer}>
               <div className={css.alturaContainer}>
                 <label htmlFor="">
@@ -136,7 +153,9 @@ const Create = () => {
                       value={dog.heightMin}
                       required
                     />
-                    {errors.heightMin && <p>{errors.heightMin}</p>}
+                    {errorValidation.heightMin && (
+                      <p>{errorValidation.heightMin}</p>
+                    )}
                   </div>
                 </label>
                 <label htmlFor="">
@@ -151,7 +170,9 @@ const Create = () => {
                       required
                     />
                   </div>
-                  {errors.heightMax && <p>{errors.heightMax}</p>}
+                  {errorValidation.heightMax && (
+                    <p>{errorValidation.heightMax}</p>
+                  )}
                 </label>
               </div>
               <div className={css.pesoContainer}>
@@ -166,7 +187,9 @@ const Create = () => {
                       value={dog.weightMin}
                       required
                     />
-                    {errors.weightMin && <p>{errors.weightMin}</p>}
+                    {errorValidation.weightMin && (
+                      <p>{errorValidation.weightMin}</p>
+                    )}
                   </div>
                 </label>
                 <label htmlFor="">
@@ -180,18 +203,20 @@ const Create = () => {
                       value={dog.weightMax}
                       required
                     />
-                    {errors.weightMax && <p>{errors.weightMax}</p>}
+                    {errorValidation.weightMax && (
+                      <p>{errorValidation.weightMax}</p>
+                    )}
                   </div>
                 </label>
               </div>
             </div>
           )}
 
-          {!errors.name &&
-            !errors.heightMin &&
-            !errors.heightMax &&
-            !errors.weightMin &&
-            !errors.weightMax && (
+          {!errorValidation.name &&
+            !errorValidation.heightMin &&
+            !errorValidation.heightMax &&
+            !errorValidation.weightMin &&
+            !errorValidation.weightMax && (
               <div className={css.promedioContainer}>
                 <label htmlFor="">
                   Promedio de vida
@@ -205,17 +230,19 @@ const Create = () => {
                       required
                     />
                   </div>
-                  {errors.life_span ? <p>{errors.life_span}</p> : null}
+                  {errorValidation.life_span ? (
+                    <p>{errorValidation.life_span}</p>
+                  ) : null}
                 </label>
               </div>
             )}
 
-          {!errors.name &&
-            !errors.heightMin &&
-            !errors.heightMax &&
-            !errors.weightMin &&
-            !errors.weightMax &&
-            !errors.life_span && (
+          {!errorValidation.name &&
+            !errorValidation.heightMin &&
+            !errorValidation.heightMax &&
+            !errorValidation.weightMin &&
+            !errorValidation.weightMax &&
+            !errorValidation.life_span && (
               <div className={css.promedioContainer}>
                 <label htmlFor="">
                   Ingrese la url con la imagen del perro
@@ -228,21 +255,21 @@ const Create = () => {
                       value={dog.reference_image_id}
                       required
                     />
-                    {errors.reference_image_id ? (
-                      <p>{errors.reference_image_id}</p>
+                    {errorValidation.reference_image_id ? (
+                      <p>{errorValidation.reference_image_id}</p>
                     ) : null}
                   </div>
                 </label>
               </div>
             )}
 
-          {!errors.name &&
-            !errors.heightMin &&
-            !errors.heightMax &&
-            !errors.weightMin &&
-            !errors.weightMax &&
-            !errors.life_span &&
-            !errors.reference_image_id && (
+          {!errorValidation.name &&
+            !errorValidation.heightMin &&
+            !errorValidation.heightMax &&
+            !errorValidation.weightMin &&
+            !errorValidation.weightMax &&
+            !errorValidation.life_span &&
+            !errorValidation.reference_image_id && (
               <select onChange={temperamentsHandler} htmlFor="" required>
                 <option value=""> -- Elige las opciones que quieras-- </option>
                 {allTemperaments.map((temperament, index) => (

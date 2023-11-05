@@ -33,7 +33,7 @@ const Home = () => {
       .then(dispatch(getTemperaments()))
       .then(() => {
         setLoading(false);
-      });
+      })
   }, [dispatch]);
 
   const dogs = useSelector((state) => state?.allDogs);

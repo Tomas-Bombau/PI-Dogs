@@ -68,7 +68,7 @@ dogs.post("/", async (req, res) => {
       createdInDb,
       temperaments
     );
-    res.status(200).send('Dog created successfully');
+    res.status(200).send('La raza se ha creado satisfactoriamente');
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

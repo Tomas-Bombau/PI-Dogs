@@ -11,6 +11,7 @@ import {
   ERRORS_GET,
   ERRORS_ID,
   RESET_ERRORS,
+  RESET_ERRORS_ID,
 } from "./actionsTypes";
 import axios from "axios";
 
@@ -59,7 +60,10 @@ export const getTemperaments = () => {
         payload: data,
       });
     }catch (error) {
-      console.log(error);
+      return dispatch({
+        type: ERRORS_GET,
+        payload: error,
+      });
     }
   };
 };
@@ -120,9 +124,16 @@ export const filterSource = (value) => {
   };
 }
 
-  export const resetErrorID = () => {
+  export const resetError = () => {
     return {
-      type: RESET_ERRORS,
+      type: RESET_ERRORS,   
     };
   };
+
+  export const resetErrorID = () => {
+    return {
+      type: RESET_ERRORS_ID,   
+    };
+  };
+
 
