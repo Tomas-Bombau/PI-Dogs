@@ -15,7 +15,7 @@ const postDogs = async (
   if(!name || !life_span || !weightMin || !weightMax || !heightMin || !heightMax || !life_span || !reference_image_id || !temperaments) throw Error ('Validation error: incomplete data provided')
   const allDogs = await getAllDogs()
   const findByName = allDogs.find(dog => dog.name == name)
-  if (findByName) throw Error ('The dog already exists') // Evito repeticiones a la hora de crear nuuevas razas de perro
+  if (findByName) throw Error ('The dog already exists') // Evito repeticiones a la hora de crear nuevas razas de perro
 
   const newDog = await Dog.create({
     reference_image_id,

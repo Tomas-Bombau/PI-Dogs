@@ -8,7 +8,9 @@ import {
   ORDER_WEIGHT,
   DOG_BY_ID,
   POST,
-  ERRORS,
+  ERRORS_GET,
+  ERRORS_ID,
+  RESET_ERRORS,
 } from "./actionsTypes";
 import axios from "axios";
 
@@ -22,7 +24,7 @@ export const getDogs = () => {
       });
     } catch (error) {
       return dispatch({
-        type: ERRORS,
+        type: ERRORS_GET,
         payload: error,
       });
     }
@@ -39,7 +41,10 @@ export const getDogById = (id) => {
         payload: data,
       });
     } catch (error) {
-      console.log(error);
+      return dispatch({
+        type: ERRORS_ID,
+        payload: error,
+      });
     }
   };
 };
@@ -113,4 +118,11 @@ export const filterSource = (value) => {
     type: FILTER_SOURCE,
     payload: value,
   };
-};
+}
+
+  export const resetErrorID = () => {
+    return {
+      type: RESET_ERRORS,
+    };
+  };
+

@@ -22,6 +22,7 @@ import css from "./Home.module.css";
 import headerImage from "../../assets/home-header.webp";
 import Loading from "../../Components/Loading/Loading";
 import Footer from "../../Components/Footer/Footer";
+import Errors from "../../Components/Errors/Errors";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ const Home = () => {
 
   const dogs = useSelector((state) => state?.allDogs);
   const temperaments = useSelector((state) => state?.allTemperaments);
-  const errors = useSelector((state) => state?.errors);
+  const errors = useSelector((state) => state?.errors_get);
 
   const [aux, setAux] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -83,16 +84,8 @@ const Home = () => {
     return <Loading />;
   }
 
-  if (errors.message ) {
-    return (
-      <div className={css.errors}>
-        {" "}
-        We are sorry: {errors.message}{" "}
-        <Link to="/">
-          <button> Go back </button>
-        </Link>
-      </div>
-    );
+  if (errors.message) {
+    return <Errors error={errors.message} />
   }
 
   return (

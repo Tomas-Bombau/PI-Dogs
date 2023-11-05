@@ -1,0 +1,25 @@
+.errors{
+    height: calc(100vh - 60px);
+    font-size: larger;
+    font-weight: 700;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.errors button{
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: rgba(205, 40, 122, 0.7);
+    border: 1px solid black;
+    box-shadow: 2px 2px 2px black;
+    border-radius: 2px;
+    color: white;
+}
+
+.errors button:hover{
+    cursor: pointer;
+}

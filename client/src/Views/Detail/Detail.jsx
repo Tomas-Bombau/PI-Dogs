@@ -9,6 +9,7 @@ import { getDogById } from "../../Redux/Actions/actions";
 
 //CSS
 import css from "./Detail.module.css";
+import Errors from "../../Components/Errors/Errors";
 
 const Detail = () => {
   const params = useParams();
@@ -24,6 +25,7 @@ const Detail = () => {
   }, [detailId, dispatch]);
 
   const dogId = useSelector((state) => state?.dogId);
+  const errorID = useSelector((state) => state?.errors_id);
 
   if (detailId.length === 36) {
     dogId.id = "Nueva Raza"
@@ -32,6 +34,10 @@ const Detail = () => {
   if (loading) {
     return <div>  </div>;
   } 
+
+  if(errorID.message){
+    return <Errors error={errorID.message} /> //o hardcodear "la raza con ID provista no se ha encontrado"
+  }
 
   return (
     <section className={css.background}>

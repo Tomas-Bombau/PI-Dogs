@@ -31,7 +31,7 @@ const Create = () => {
     heightMax: "",
     weightMin: "",
     weightMax: "",
-    life_span: "",  
+    life_span: "",
     reference_image_id: "",
   });
   const [chosenTemperaments, setchosenTemperaments] = useState();
@@ -75,28 +75,31 @@ const Create = () => {
       heightMin: "",
       heightMax: "",
       temperaments: [],
-  })}
+    });
+  };
 
   const reset = () => {
     setDog({
       reference_image_id: "",
       life_span: "",
       name: "",
-      weightMin: "",
-      weightMax: "",
       heightMin: "",
       heightMax: "",
+      weightMin: "",
+      weightMax: "",
       temperaments: [],
-  })
-    setCount(1)
-  }
+    });
+    setCount(1);
+  };
 
   const handlerDelete = (index) => {
-    const filteredTemperaments = chosenTemperaments.filter(e => chosenTemperaments.indexOf(e) !== index)
-    setDog({...dog, temperaments: filteredTemperaments})
-    setchosenTemperaments(filteredTemperaments)
-    setCount(count - 1)
-  }
+    const filteredTemperaments = chosenTemperaments.filter(
+      (e) => chosenTemperaments.indexOf(e) !== index
+    );
+    setDog({ ...dog, temperaments: filteredTemperaments });
+    setchosenTemperaments(filteredTemperaments);
+    setCount(count - 1);
+  };
 
   return (
     <section className={css.background}>
@@ -104,7 +107,6 @@ const Create = () => {
         <div className={css.formContent}>
           <div className={css.title}>
             <label htmlFor="">
-              {" "}
               Nombre de raza
               <div>
                 <input
@@ -124,65 +126,61 @@ const Create = () => {
             <div className={css.altYPesoContainer}>
               <div className={css.alturaContainer}>
                 <label htmlFor="">
-                  {" "}
                   Altura Min (cm):
                   <div>
-                  <input
-                    onChange={formHandler}
-                    type="number"
-                    name="heightMin"
-                    placeholder="0"
-                    value={dog.heightMin}
-                    required
-                  />
-                  {errors.heightMin && <p>{errors.heightMin}</p>}
+                    <input
+                      onChange={formHandler}
+                      type="number"
+                      name="heightMin"
+                      placeholder="0"
+                      value={dog.heightMin}
+                      required
+                    />
+                    {errors.heightMin && <p>{errors.heightMin}</p>}
                   </div>
                 </label>
                 <label htmlFor="">
-                  {" "}
                   Altura Max (cm):
                   <div>
-                  <input
-                    onChange={formHandler}
-                    type="number"
-                    name="heightMax"
-                    placeholder="0"
-                    value={dog.heightMax}
-                    required
-                  />
+                    <input
+                      onChange={formHandler}
+                      type="number"
+                      name="heightMax"
+                      placeholder="0"
+                      value={dog.heightMax}
+                      required
+                    />
                   </div>
                   {errors.heightMax && <p>{errors.heightMax}</p>}
                 </label>
-                
               </div>
               <div className={css.pesoContainer}>
                 <label htmlFor="">
-                  {" "}
-                  Peso Min:
+                  Peso Min (kg):
                   <div>
-                  <input
-                    onChange={formHandler}
-                    type="number"
-                    name="weightMin"
-                    placeholder="1"
-                    value={dog.weightMin}
-                    required
-                  />
-                  {errors.weightMin && <p>{errors.weightMin}</p>}
+                    <input
+                      onChange={formHandler}
+                      type="number"
+                      name="weightMin"
+                      placeholder="0"
+                      value={dog.weightMin}
+                      required
+                    />
+                    {errors.weightMin && <p>{errors.weightMin}</p>}
                   </div>
                 </label>
                 <label htmlFor="">
-                  Peso Max:
+                  Peso Max (kg):
                   <div>
-                  <input
-                    onChange={formHandler}
-                    type="number"
-                    name="weightMax"
-                    placeholder="0"
-                    value={dog.weightMax}
-                    required
-                  />
-                  {errors.weightMax  && <p>{errors.weightMax}</p>}
+                    <input
+                      onChange={formHandler}
+                      type="number"
+                      name="weightMax"
+                      placeholder="0"
+                      value={dog.weightMax}
+                      required
+                    />
+                    {errors.weightMax && <p>{errors.weightMax}</p>}
                   </div>
                 </label>
               </div>
@@ -220,20 +218,19 @@ const Create = () => {
             !errors.life_span && (
               <div className={css.promedioContainer}>
                 <label htmlFor="">
-                  {" "}
                   Ingrese la url con la imagen del perro
                   <div>
-                  <input
-                    onChange={formHandler}
-                    type="url"
-                    name="reference_image_id"
-                    placeholder="https://www.ejemplo.com/"
-                    value={dog.reference_image_id}
-                    required
-                  />
-                  {errors.reference_image_id ? (
-                    <p>{errors.reference_image_id}</p>
-                  ) : null}
+                    <input
+                      onChange={formHandler}
+                      type="url"
+                      name="reference_image_id"
+                      placeholder="https://www.ejemplo.com/"
+                      value={dog.reference_image_id}
+                      required
+                    />
+                    {errors.reference_image_id ? (
+                      <p>{errors.reference_image_id}</p>
+                    ) : null}
                   </div>
                 </label>
               </div>
@@ -262,7 +259,16 @@ const Create = () => {
               Tus elecciones de temperamentos son las siguientes:
               <div className={css.temperamentsPosition}>
                 {chosenTemperaments.map((e, index) => (
-                  <div key={index} className={css.temperamentsCards}> {e} <span onClick={() => handlerDelete(index)} className={css.delete}>x</span></div> //
+                  <div key={index} className={css.temperamentsCards}>
+                    {" "}
+                    {e}{" "}
+                    <span
+                      onClick={() => handlerDelete(index)}
+                      className={css.delete}
+                    >
+                      x
+                    </span>
+                  </div> //
                 ))}
               </div>
               <div className={css.temperamentsPositionError}>
@@ -273,8 +279,13 @@ const Create = () => {
             </div>
           )}
           <div className={css.buttonContainer}>
-            <button type="button" onClick={reset}> Limpiar campos </button>
-            <button type="submit" disabled={buttonDisabled}>Enviar formulario</button>
+            <button type="button" onClick={reset}>
+              {" "}
+              Limpiar campos{" "}
+            </button>
+            <button type="submit" disabled={buttonDisabled}>
+              Enviar formulario
+            </button>
           </div>
         </div>
       </form>

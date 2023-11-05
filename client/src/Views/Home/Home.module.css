@@ -83,7 +83,7 @@
     border-radius: 5px;
 }
 
-.errors{
+/* .errors{
     height: calc(100vh - 60px);
     font-size: larger;
     font-weight: 700;
@@ -107,7 +107,7 @@
 
 .errors button:hover{
     cursor: pointer;
-}
+} */
 
 @media (max-width: 1450px){
 .headerImage img{
