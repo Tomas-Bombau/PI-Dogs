@@ -43,14 +43,14 @@ export const getDogById = (id) => {
 export const getTemperaments = () => {
   return async function (dispatch) {
     try {
-      const response = await axios.get("http://localhost:3001/temperaments");
+      const response = await axios.get("http://localhost:3001/temperaments/");
       const data = response.data;
       return dispatch({
         type: GET_TEMPERAMENTS,
         payload: data,
       });
     } catch (error) {
-      console.log(error)
+      throw Error (error)
     }
   };
 };

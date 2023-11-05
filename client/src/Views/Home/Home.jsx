@@ -32,7 +32,7 @@ const Home = () => {
   useEffect(async () => {
     try{
     await dispatch(getDogs())
-      .then(dispatch(getTemperaments()))
+      .then(await dispatch(getTemperaments()))
       .then(() => {
         setLoading(false);
       })
