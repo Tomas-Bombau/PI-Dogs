@@ -2,7 +2,7 @@ import React from "react";
 //Hooks
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 //Components and Functions
 import {
@@ -33,7 +33,7 @@ const Home = () => {
       .then(dispatch(getTemperaments()))
       .then(() => {
         setLoading(false);
-      })
+      });
   }, [dispatch]);
 
   const dogs = useSelector((state) => state?.allDogs);
@@ -85,13 +85,13 @@ const Home = () => {
   }
 
   if (errors.message) {
-    return <Errors error={errors.message} />
+    return <Errors error={errors.message} />;
   }
 
   return (
     <div>
-      <section className={css.homeContainer}>
-        <div className={css.headerImage}>
+      <main className={css.homeContainer}>
+        <header className={css.headerImage}>
           <img src={headerImage} alt="dog-sleep" />
           <h1> PI Henry</h1>
           <div>
@@ -99,8 +99,8 @@ const Home = () => {
               <button> Crear Raza</button>
             </Link>
           </div>
-        </div>
-        <div className={css.options}>
+        </header>
+        <section className={css.options}>
           <button onClick={handleReaload}>Recargar razas </button>
           <select name="order" onChange={handleOrder}>
             <option value="a-z"> Razas A - Z </option>
@@ -121,20 +121,23 @@ const Home = () => {
             <option value="db"> Razas creadas </option>
             <option value="api"> Razas existentes</option>
           </select>
-        </div>
-      </section>
-      <Pagination
-        dogsPerPage={dogsPerPage}
-        dogs={dogs.length}
-        pagination={pagination}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
-      {dogs.length === 0 ? <NoDogs /> : <CardsContainer dogs={currentDogs} />}
+        </section>
+          <Pagination
+            dogsPerPage={dogsPerPage}
+            dogs={dogs.length}
+            pagination={pagination}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
+          {dogs.length === 0 ? (
+            <NoDogs />
+          ) : (
+            <CardsContainer dogs={currentDogs} />
+          )}
 
-      {errors ? null : null}
-
-      <Footer />
+          {errors ? null : null}
+        <Footer />
+      </main>
     </div>
   );
 };

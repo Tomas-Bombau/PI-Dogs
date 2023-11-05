@@ -12,9 +12,11 @@ import validationTemperaments from "./validationTemperaments";
 //
 import css from "./Create.module.css";
 import Errors from "../../Components/Errors/Errors";
+import { Link, useNavigate } from "react-router-dom";
 
 const Create = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [responseMessage, setResponseMessage] = useState(null);
   const [responseError, setResponseError] = useState(null);
@@ -68,21 +70,20 @@ const Create = () => {
 
   const submitForm = async (event) => {
     event.preventDefault();
-    try{
-    const response = await dispatch(postDog(dog));
-    setResponseMessage(response.payload.data); // Set the response message in the state
-    setDog({
-      reference_image_id: "",
-      life_span: "",
-      name: "",
-      weightMin: "",
-      weightMax: "",
-      heightMin: "",
-      heightMax: "",
-      temperaments: [],
-    })
-    }
-    catch (error) {
+    try {
+      const response = await dispatch(postDog(dog));
+      setResponseMessage(response.payload.data); // Set the response message in the state
+      setDog({
+        reference_image_id: "",
+        life_span: "",
+        name: "",
+        weightMin: "",
+        weightMax: "",
+        heightMin: "",
+        heightMax: "",
+        temperaments: [],
+      });
+    } catch (error) {
       setResponseError(error.response.data.error);
     }
   };
@@ -110,12 +111,10 @@ const Create = () => {
     setCount(count - 1);
   };
 
-  if(responseMessage){
-    return <div>{responseMessage}</div>
-  }
 
-  if(responseError){
-    return <Errors error={responseError} />
+
+  if (responseError) {
+    return <Errors error={responseError} />;
   }
 
   return (
@@ -135,7 +134,7 @@ const Create = () => {
                   required
                 />
               </div>
-              {errorValidation.name ? <p>{errorValidation.name}</p> : null}
+              {errorValidation.name ? <p>{errorValidation.name}</p>: null}
             </label>
           </div>
 
@@ -315,6 +314,7 @@ const Create = () => {
             </button>
           </div>
         </div>
+        {responseMessage ? <div className={css.success}>  La raza se ha creado satisfactoriamente<p className={css.botonInicio}><Link to='/home'> Volver al inicio </Link></p></div> : null}
       </form>
     </section>
   );

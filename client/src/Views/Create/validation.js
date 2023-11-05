@@ -7,6 +7,8 @@ const validation = (data) => {
 
   if (data.name.length >= 20) {
     errors.name = "Nombre demasiado largo";
+  } else {
+    errors.name = ''
   }
 
   if (data.heightMin === "") {
