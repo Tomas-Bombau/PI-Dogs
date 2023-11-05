@@ -2,7 +2,7 @@ import React from "react";
 //Hooks
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 //Components and Functions
 import {
@@ -20,6 +20,8 @@ import Pagination from "../../Components/Pagination/Pagination";
 //CSS
 import css from "./Home.module.css";
 import headerImage from "../../assets/home-header.webp";
+import Loading from "../../Components/Loading/Loading";
+import Footer from "../../Components/Footer/Footer";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -78,10 +80,10 @@ const Home = () => {
   };
 
   if (loading) {
-    return <div> Loading... </div>;
+    return <Loading />;
   }
 
-  if (errors.message) {
+  if (errors.message ) {
     return (
       <div className={css.errors}>
         {" "}
@@ -98,7 +100,7 @@ const Home = () => {
       <section className={css.homeContainer}>
         <div className={css.headerImage}>
           <img src={headerImage} alt="dog-sleep" />
-          <h1>Bienvenidos al mundo de los perros!</h1>
+          <h1> PI Henry</h1>
           <div>
             <Link to="/create">
               <button> Crear Raza</button>
@@ -106,12 +108,12 @@ const Home = () => {
           </div>
         </div>
         <div className={css.options}>
-          <button onClick={handleReaload}>Recargar perros </button>
+          <button onClick={handleReaload}>Recargar razas </button>
           <select name="order" onChange={handleOrder}>
-            <option value="a-z"> Perros A - Z </option>
-            <option value="z-a"> Perros Z - A </option>
-            <option value="crec"> Perros más livianos </option>
-            <option value="decre"> Perros más pesados </option>
+            <option value="a-z"> Razas A - Z </option>
+            <option value="z-a"> Razas Z - A </option>
+            <option value="crec"> Razas más livianas </option>
+            <option value="decre"> Razas más pesadas </option>
           </select>
           <select name="temperaments" onChange={handleTemperaments}>
             <option value="todos"> Todos </option>
@@ -123,8 +125,8 @@ const Home = () => {
           </select>
           <select onChange={handleSource} name="order" id="">
             <option value="todos"> Todos </option>
-            <option value="db"> Creados </option>
-            <option value="api"> Existentes</option>
+            <option value="db"> Razas creadas </option>
+            <option value="api"> Razas existentes</option>
           </select>
         </div>
       </section>
@@ -138,6 +140,8 @@ const Home = () => {
       {dogs.length === 0 ? <NoDogs /> : <CardsContainer dogs={currentDogs} />}
 
       {errors ? null : null}
+
+      <Footer />
     </div>
   );
 };

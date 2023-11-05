@@ -5,12 +5,13 @@ import Home from './Views/Home/Home';
 import Detail from './Views/Detail/Detail';
 import Create from './Views/Create/Create';
 import NavBar from './Components/NavBar/NavBar';
-
+import Footer from './Components/Footer/Footer';
 
 
 function App() {
 
   const location = useLocation()
+  const urlRegex = /^\/detail\/\d+$/
 
   return (
     <div className="App">

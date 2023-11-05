@@ -3,14 +3,18 @@
     width: 300px;
     margin-top: 20px;
     overflow: hidden;
-    border-radius: 20px;
-    box-shadow: 4px 4px 10px #291D1F;
+    border-radius: 255px 15px 225px 15px/10px 50px 10px 50px;
+    border:solid 2px #291D1F;
     position: relative;
+    /* background-color: #f7ecdfe3 */
+    background-color: #f4ede4fa
 }
 
 .cards img{
     height: 200px;
     width: 300px;
+    border-bottom: 1px solid #291D1F;
+    box-shadow: 0px 2px 5px #291D1F;
 }
 
 .cards .imagen{
@@ -21,13 +25,14 @@
     right: 0;
 }
 
+
 .cards h2{
     text-align: center;
     margin: 5px;
 }
 
 .cards:hover{
-    transform: scale(1.02)
+    box-shadow: 4px 4px 10px #291D1F;
 }
 
 .weight{

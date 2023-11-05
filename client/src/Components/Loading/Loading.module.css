@@ -1,0 +1,19 @@
+.loadingContainer{
+    width: 100%;
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    background-image: url('../../assets/backgroundLoading.jpg');
+    background-size: cover;
+}
+
+.loadingContainer img{
+    width: 300px;
+}
+
+.loadingContainer h2{
+    font-size: 50px;
+}

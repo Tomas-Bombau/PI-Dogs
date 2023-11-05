@@ -38,7 +38,7 @@ const NavBar = () => {
           <Link to="/create">Crear raza</Link>
         </li>
         <li>
-          <Link to="/home">Contactanos</Link>
+          <a href="/home">Contactanos</a>
         </li>
       </ul>
       <div className={css.enterBreed}>

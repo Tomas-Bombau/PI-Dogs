@@ -1,3 +1,4 @@
+
 .homeContainer{
     display: flex;
     flex-direction: column;
@@ -16,6 +17,8 @@
     top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 30px;
 }
 
 .homeContainer .headerImage img{
@@ -60,14 +63,15 @@
 .options button{
     padding: 4px 40px;
     border-radius: 5px;
-    border: none;
-    background-color: black;
+    border: 1px solid white;
+    box-shadow: inset 0px 0px 20px 1px rgba(205, 40, 122, 0.7);
+    background-color: rgb(0, 0, 0);
     font-weight: bold;
     color: white;
     position: relative;
 }
 .options button:active{
-    color: red;
+    transform: scale(1.05);
 }
 
 .options button:hover{
@@ -88,6 +92,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 10;
 }
 
 .errors button{
@@ -104,7 +109,7 @@
     cursor: pointer;
 }
 
-@media (max-width: 1000px){
+@media (max-width: 1450px){
 .headerImage img{
         display: none;
     }
