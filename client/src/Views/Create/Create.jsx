@@ -12,11 +12,10 @@ import validationTemperaments from "./validationTemperaments";
 //
 import css from "./Create.module.css";
 import Errors from "../../Components/Errors/Errors";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Create = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [responseMessage, setResponseMessage] = useState(null);
   const [responseError, setResponseError] = useState(null);
@@ -110,7 +109,6 @@ const Create = () => {
     setchosenTemperaments(filteredTemperaments);
     setCount(count - 1);
   };
-
 
 
   if (responseError) {

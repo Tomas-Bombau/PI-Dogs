@@ -27,18 +27,25 @@ import Errors from "../../Components/Errors/Errors";
 const Home = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
+  const [errors, setErrors] = useState("")
 
-  useEffect(() => {
-    dispatch(getDogs())
+  useEffect(async () => {
+    try{
+    await dispatch(getDogs())
       .then(dispatch(getTemperaments()))
       .then(() => {
         setLoading(false);
-      });
+      })
+    }
+    catch (error) {
+      setErrors(error.message)
+      setLoading(false)
+    }
   }, [dispatch]);
 
+ 
   const dogs = useSelector((state) => state?.allDogs);
   const temperaments = useSelector((state) => state?.allTemperaments);
-  const errors = useSelector((state) => state?.errors_get);
 
   const [aux, setAux] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -81,11 +88,11 @@ const Home = () => {
   };
 
   if (loading) {
-    return <Loading />;
+    return <Loading />; 
   }
 
-  if (errors.message) {
-    return <Errors error={errors.message} />;
+  if (errors) {
+    return <Errors error={errors} />;
   }
 
   return (
@@ -135,7 +142,7 @@ const Home = () => {
             <CardsContainer dogs={currentDogs} />
           )}
 
-          {errors ? null : null}
+          {/* {errors ? null : null} */}
         <Footer />
       </main>
     </div>

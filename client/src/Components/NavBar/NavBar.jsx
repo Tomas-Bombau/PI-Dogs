@@ -16,9 +16,9 @@ const NavBar = () => {
     dispatch(searchByName(nameEntered));
   };
 
-  const clickResetErrorID = () => {
-    dispatch(resetErrorID())
-  }
+  // const clickResetErrorID = () => {
+  //   dispatch(resetErrorID())
+  // }
 
   return (
     <nav>
@@ -36,7 +36,7 @@ const NavBar = () => {
       </div>
       <ul className={menu ? css.open : ""}>
         <li>
-          <Link onClick={clickResetErrorID} to="/home">Home</Link>
+          <Link to="/home">Home</Link>
         </li>
         <li>
           <Link to="/create">Crear raza</Link>

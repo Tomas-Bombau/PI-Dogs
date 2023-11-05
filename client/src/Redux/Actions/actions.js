@@ -8,10 +8,6 @@ import {
   ORDER_WEIGHT,
   DOG_BY_ID,
   POST,
-  ERRORS_GET,
-  ERRORS_ID,
-  RESET_ERRORS,
-  RESET_ERRORS_ID,
 } from "./actionsTypes";
 import axios from "axios";
 
@@ -24,10 +20,7 @@ export const getDogs = () => {
         payload: response.data,
       });
     } catch (error) {
-      return dispatch({
-        type: ERRORS_GET,
-        payload: error,
-      });
+      throw Error (error.message)
     }
   };
 };
@@ -42,10 +35,7 @@ export const getDogById = (id) => {
         payload: data,
       });
     } catch (error) {
-      return dispatch({
-        type: ERRORS_ID,
-        payload: error,
-      });
+      throw Error (error)
     }
   };
 };
@@ -59,11 +49,8 @@ export const getTemperaments = () => {
         type: GET_TEMPERAMENTS,
         payload: data,
       });
-    }catch (error) {
-      return dispatch({
-        type: ERRORS_GET,
-        payload: error,
-      });
+    } catch (error) {
+      console.log(error)
     }
   };
 };
@@ -124,16 +111,16 @@ export const filterSource = (value) => {
   };
 }
 
-  export const resetError = () => {
-    return {
-      type: RESET_ERRORS,   
-    };
-  };
+  // export const resetError = () => {
+  //   return {
+  //     type: RESET_ERRORS,   
+  //   };
+  // };
 
-  export const resetErrorID = () => {
-    return {
-      type: RESET_ERRORS_ID,   
-    };
-  };
+  // export const resetErrorID = () => {
+  //   return {
+  //     type: RESET_ERRORS_ID,   
+  //   };
+  // };
 
 

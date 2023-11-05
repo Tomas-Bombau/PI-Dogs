@@ -16,16 +16,23 @@ const Detail = () => {
   const detailId = params.id;
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true)
+  const [errorID, setErrorId] = useState("")
 
-  useEffect(() => {
-    dispatch(getDogById(detailId))
+  useEffect(async () => {
+    try{
+    await dispatch(getDogById(detailId))
     .then(() => {
       setLoading(false); 
-    });;
+    })
+    } catch (error){
+      setErrorId(error.message)
+      setLoading(false)
+    }
   }, [detailId, dispatch]);
 
+  console.log(errorID.message)
+
   const dogId = useSelector((state) => state?.dogId);
-  const errorID = useSelector((state) => state?.errors_id);
 
   if (detailId.length === 36) {
     dogId.id = "Nueva Raza"
@@ -35,8 +42,8 @@ const Detail = () => {
     return <div>  </div>;
   } 
 
-  if(errorID.message){
-    return <Errors error={"la raza con ID provista no se ha encontrado"} /> 
+  if(errorID){ 
+    return <Errors error={errorID} />
   }
 
   return (

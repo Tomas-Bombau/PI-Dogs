@@ -7,10 +7,6 @@ export const ORDER_WEIGHT = "ORDER_WEIGHT"
 export const FILTER_SOURCE = "FILTER_SOURCE"
 export const DOG_BY_ID = "DOG_BY_ID"
 export const POST = "POST"
-export const ERRORS_GET = "ERRORS_GET"
-export const ERRORS_ID = "ERRORS_ID"
-export const RESET_ERRORS = "RESET_ERRORS"
-export const RESET_ERRORS_ID = "RESET_ERRORS_ID"
 
 
 

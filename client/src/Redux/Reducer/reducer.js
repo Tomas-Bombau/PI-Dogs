@@ -7,10 +7,6 @@ import {
   ORDER_WEIGHT,
   FILTER_SOURCE,
   DOG_BY_ID,
-  ERRORS_GET,
-  ERRORS_ID,
-  RESET_ERRORS,
-  RESET_ERRORS_ID,
 } from "../Actions/actionsTypes";
 
 const initialState = {
@@ -20,25 +16,10 @@ const initialState = {
   dbDog: [],
   dogId: [],
   dogIdCount: 0,
-  errors_get: {},
-  errors_id: {}
 };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-
-    case ERRORS_GET:
-      return { ...state, errors_get: action.payload};
-
-    case ERRORS_ID:
-      return { ...state, errors_id: action.payload};
-
-    case RESET_ERRORS:
-      return { ...state, errors_id: {}, errors_get: {}};
-
-    case RESET_ERRORS_ID:
-      return { ...state, errors_id: {}};
-
     case GET_DOGS:
       const db = action.payload.filter((dog) => dog.createdInDb === true)
       return { ...state, allDogs: action.payload, allDogsCopy: action.payload, dbDog: db };

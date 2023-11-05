@@ -11,7 +11,7 @@ dogs.get("/", async (req, res) => {
   const { name } = req.query;
   if (name) {
     try {
-      const getDogByName = await allDogsByName(name)
+      const getDogByName = await allDogsByName(name);
       res.status(200).json(getDogByName);
     } catch (error) {
       res.status(500).json({ error: error.message });
@@ -35,11 +35,11 @@ dogs.get("/:idRaza", async (req, res) => {
       ? res.status(200).json(dogById)
       : res
           .status(404)
-          .send(
-            "The dog doesn't existe. The ID you provided doesn't match our records"
-          );
+          .json({
+            message: "The dog doesn't existe. The ID you provided doesn't match our records"
+  });
   } catch (error) {
-    res.status(500).json({ error: error.message }); // Error the servidor interno
+    res.status(500).json({ error: error.message });
   }
 });
 
@@ -68,7 +68,7 @@ dogs.post("/", async (req, res) => {
       createdInDb,
       temperaments
     );
-    res.status(200).send('La raza se ha creado satisfactoriamente');
+    res.status(200).send("La raza se ha creado satisfactoriamente");
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
