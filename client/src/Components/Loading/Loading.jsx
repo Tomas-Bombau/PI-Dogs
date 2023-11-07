@@ -1,6 +1,9 @@
-import React from "react";
-import css from "./Loading.module.css";
+//assets
 import loadingImage from "../../assets/loadingImage.jpg";
+
+//CSS
+import css from "./Loading.module.css";
+
 
 const Loading = () => {
   return (

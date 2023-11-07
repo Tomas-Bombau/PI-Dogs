@@ -74,9 +74,10 @@ nav .menu{
         flex-direction: column-reverse;
     }
 
-    nav input{
-        padding: 10px 100px;
+    nav .enterBreed input{
+        padding: 5px 20px;
         color: black;
+        text-align: center;
     }
 
     nav ul{

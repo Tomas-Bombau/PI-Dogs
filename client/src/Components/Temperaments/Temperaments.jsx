@@ -1,4 +1,4 @@
-import React from "react";
+//CSS
 import css from './Temperaments.module.css'
 
 const Temperaments = (props) => {

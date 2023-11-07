@@ -1,5 +1,7 @@
-import React from "react";
+//Components
 import Cards from "./Cards";
+
+//CSS
 import css from './CardsContainer.module.css'
 
 const CardsContainer = (props) => {

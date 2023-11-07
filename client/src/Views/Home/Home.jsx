@@ -28,6 +28,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState("");
+  const [aux, setAux] = useState(true);
 
   useEffect(() => {
     dispatch(getDogs())
@@ -44,7 +45,7 @@ const Home = () => {
   const dogs = useSelector((state) => state?.allDogs);
   const temperaments = useSelector((state) => state?.allTemperaments);
 
-  const [aux, setAux] = useState(true);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [dogsPerPage, setDogsPerPage] = useState(8);
   const lastDogIndex = currentPage * dogsPerPage;

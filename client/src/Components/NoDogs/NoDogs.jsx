@@ -1,6 +1,8 @@
-import React from "react";
-import css from "./NoDogs.module.css";
+//assets
 import errorImage from "../../assets/error-image.jpeg";
+
+//CSS
+import css from "./NoDogs.module.css";
 
 const NoDogs = () => {
   return (

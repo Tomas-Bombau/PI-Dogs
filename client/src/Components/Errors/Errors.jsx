@@ -1,6 +1,8 @@
-import React from 'react'
-import css from './Errors.module.css'
+//Hooks
 import { Link } from 'react-router-dom'
+
+//CSS
+import css from './Errors.module.css'
 
 const Errors = (props) => {
 

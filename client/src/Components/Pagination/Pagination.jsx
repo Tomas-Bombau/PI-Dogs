@@ -1,3 +1,4 @@
+//CSS
 import css from "./Pagination.module.css";
 
 const Pagination = ({

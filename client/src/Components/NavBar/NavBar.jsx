@@ -1,8 +1,11 @@
+//Hooks
 import React, { useState } from "react";
-import css from "./NavBar.module.css";
 import { useDispatch } from "react-redux";
 import { searchByName } from "../../Redux/Actions/actions";
 import { Link } from "react-router-dom";
+
+//CSS
+import css from "./NavBar.module.css";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -39,6 +42,9 @@ const NavBar = () => {
         </li>
         <li>
           <a href="/home">Contactanos</a>
+        </li>
+        <li>
+        <Link to="/">Salir</Link>
         </li>
       </ul>
       <div className={css.enterBreed}>
