@@ -5,6 +5,7 @@ import Home from './Views/Home/Home';
 import Detail from './Views/Detail/Detail';
 import Create from './Views/Create/Create';
 import NavBar from './Components/NavBar/NavBar';
+import About from './Views/About/About';
 
 function App() {
   const location = useLocation()
@@ -17,6 +18,7 @@ function App() {
         <Route path='/home' Component={Home}/>
         <Route path='/create' Component={Create}/>
         <Route path='/detail/:id' Component={Detail} />
+        <Route path='/about' Component={About} />
       </Routes>
     </div>
   );

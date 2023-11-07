@@ -46,7 +46,7 @@ const NavBar = () => {
           <Link onClick={() => setActiveUnderline(2)} className={activeUnderline === 2 ? css.underline : null} to="/create">Crear raza</Link>
         </li>
         <li>
-          <a onClick={() => setActiveUnderline(3)} className={activeUnderline === 3 ? css.underline : null} href="/home">Contactanos</a>
+          <Link onClick={() => setActiveUnderline(3)} className={activeUnderline === 3 ? css.underline : null} to="/about">Contactanos</Link>
         </li>
         <li>
         <Link to="/">Salir</Link>
