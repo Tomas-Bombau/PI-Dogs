@@ -16,6 +16,7 @@ const CardsContainer = (props) => {
             weightMin={e.weightMin}
             weightMax={e.weightMax}
             temperaments={e.temperaments}
+            createdInDb={e.createdInDb}
           />
         );
       })}

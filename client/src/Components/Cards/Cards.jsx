@@ -1,19 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import Temperaments from "../Temperaments/Temperaments";
 import css from "./Cards.module.css";
 import detailImage from '../../assets/detail-image.png'
 import {Link} from 'react-router-dom'
+import { deleteDog } from "../../Redux/Actions/actions";
+import { useDispatch } from "react-redux";
  
 
 const Cards = (props) => {
-  const { id, reference_image_id, weightMin, weightMax, name, temperaments} =
+  const { id, reference_image_id, weightMin, weightMax, name, temperaments, createdInDb} =
     props;
+
+  const dispatch = useDispatch()
+
+  const deleteHandler = async (id) =>{
+      const newId = {id: id}
+      dispatch(await deleteDog(newId))
+  } 
+  
 
   return (
     <div className={css.cards}>
       <Link className={css.link} to={`/detail/${id}`}><img className={css.imagen} src={detailImage} alt="access-to-details" /></Link>
       <img src={reference_image_id} alt="" />
       <h2>{name}</h2>
+      {createdInDb ? <p className={css.eliminar} alt="" onClick={() => deleteHandler(id)}> X </p> : null}
       <div className={css.weight}>
         <p>Min weight: {weightMin}</p>
         <p>Max weight: {weightMax}</p>

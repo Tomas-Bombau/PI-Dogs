@@ -3,6 +3,7 @@ const { getAllDogs } = require("../controllers/getAllDogs");
 const postDogs = require("../controllers/postDogs");
 const getDogById = require("../controllers/getDogById");
 const allDogsByName = require("../controllers/getDogByname");
+const deleteDog = require("../controllers/deleteDog");
 
 const dogs = Router();
 
@@ -73,5 +74,15 @@ dogs.post("/", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+dogs.delete("/delete", async (req, res) => {
+  const {id} = req.body
+  try {
+    await deleteDog(id)
+    res.status(200).send("La raza se ha eliminado satisfactoriamente");
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+})
 
 module.exports = dogs;

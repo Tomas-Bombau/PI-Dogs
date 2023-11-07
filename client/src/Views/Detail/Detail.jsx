@@ -18,16 +18,15 @@ const Detail = () => {
   const [loading, setLoading] = useState(true)
   const [errorID, setErrorId] = useState("")
 
-  useEffect(async () => {
-    try{
-    await dispatch(getDogById(detailId))
+  useEffect(() => {
+    dispatch(getDogById(detailId))
     .then(() => {
       setLoading(false); 
     })
-    } catch (error){
+    .catch ((error) => {
       setErrorId(error.message)
       setLoading(false)
-    }
+    })
   }, [detailId, dispatch]);
 
   console.log(errorID.message)

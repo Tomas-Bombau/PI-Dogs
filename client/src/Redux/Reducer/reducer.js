@@ -7,6 +7,7 @@ import {
   ORDER_WEIGHT,
   FILTER_SOURCE,
   DOG_BY_ID,
+  DELETE,
 } from "../Actions/actionsTypes";
 
 const initialState = {
@@ -32,6 +33,11 @@ const rootReducer = (state = initialState, action) => {
 
     case SEARCH:
       return { ...state, allDogs: action.payload };
+
+    case DELETE:
+      const filterByDelete = state.dbDog.filter(dog => dog.id !== action.payload)
+      const allDogsFilterByDelete = state.allDogs.filter(dog => dog.id !== action.payload)
+      return { ...state, dbDog: filterByDelete, allDogs: allDogsFilterByDelete};
 
     case ORDER_NAME:
       const dogsName = state.allDogs;

@@ -27,23 +27,20 @@ import Errors from "../../Components/Errors/Errors";
 const Home = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
-  const [errors, setErrors] = useState("")
+  const [errors, setErrors] = useState("");
 
-  useEffect(async () => {
-    try{
-    await dispatch(getDogs())
-      .then(await dispatch(getTemperaments()))
+  useEffect(() => {
+    dispatch(getDogs())
+      .then(dispatch(getTemperaments()))
       .then(() => {
         setLoading(false);
       })
-    }
-    catch (error) {
-      setErrors(error.message)
-      setLoading(false)
-    }
+      .catch((error) => {
+        setErrors(error.message);
+        setLoading(false);
+      });
   }, [dispatch]);
 
- 
   const dogs = useSelector((state) => state?.allDogs);
   const temperaments = useSelector((state) => state?.allTemperaments);
 
@@ -88,7 +85,7 @@ const Home = () => {
   };
 
   if (loading) {
-    return <Loading />; 
+    return <Loading />;
   }
 
   if (errors) {
@@ -129,20 +126,16 @@ const Home = () => {
             <option value="api"> Razas existentes</option>
           </select>
         </section>
-          <Pagination
-            dogsPerPage={dogsPerPage}
-            dogs={dogs.length}
-            pagination={pagination}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-          />
-          {dogs.length === 0 ? (
-            <NoDogs />
-          ) : (
-            <CardsContainer dogs={currentDogs} />
-          )}
+        <Pagination
+          dogsPerPage={dogsPerPage}
+          dogs={dogs.length}
+          pagination={pagination}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+        {dogs.length === 0 ? <NoDogs /> : <CardsContainer dogs={currentDogs} />}
 
-          {/* {errors ? null : null} */}
+        {/* {errors ? null : null} */}
         <Footer />
       </main>
     </div>

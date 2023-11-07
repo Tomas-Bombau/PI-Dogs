@@ -29,6 +29,7 @@ const Create = () => {
     heightMax: "",
     temperaments: [],
   });
+
   const [errorValidation, setErrorValidation] = useState({
     name: " ",
     heightMin: "",

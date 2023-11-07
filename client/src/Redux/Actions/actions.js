@@ -8,6 +8,7 @@ import {
   ORDER_WEIGHT,
   DOG_BY_ID,
   POST,
+  DELETE,
 } from "./actionsTypes";
 import axios from "axios";
 
@@ -43,7 +44,7 @@ export const getDogById = (id) => {
 export const getTemperaments = () => {
   return async function (dispatch) {
     try {
-      const response = await axios.get("http://localhost:3001/temperaments/");
+      const response = await axios.get("http://localhost:3001/temperaments");
       const data = response.data;
       return dispatch({
         type: GET_TEMPERAMENTS,
@@ -90,7 +91,6 @@ export const orderName = (value) => {
 };
 
 export const orderWeight = (value) => {
-  console.log(value);
   return {
     type: ORDER_WEIGHT,
     payload: value,
@@ -111,16 +111,15 @@ export const filterSource = (value) => {
   };
 }
 
-  // export const resetError = () => {
-  //   return {
-  //     type: RESET_ERRORS,   
-  //   };
-  // };
+  export const deleteDog = (newId) => {
+    return async function (dispatch) {
+      await axios.delete("http://localhost:3001/dogs/delete", {data: newId});
+      return dispatch({
+        type: DELETE,
+        payload: newId.id,
+      });
+    };
+  };
 
-  // export const resetErrorID = () => {
-  //   return {
-  //     type: RESET_ERRORS_ID,   
-  //   };
-  // };
 
 
