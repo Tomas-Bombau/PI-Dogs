@@ -11,6 +11,9 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [menu, setMenu] = useState(false);
+  const [activeUnderline, setActiveUnderline] = useState(1)
+
+
 
   const handleName = (event) => {
     event.preventDefault();
@@ -18,7 +21,9 @@ const NavBar = () => {
     setName(nameEntered);
     dispatch(searchByName(nameEntered));
   };
-
+  
+ 
+  console.log(activeUnderline)
   return (
     <nav>
       <h2>Mis Pichos 🐶</h2>
@@ -34,14 +39,14 @@ const NavBar = () => {
         <span></span>
       </div>
       <ul className={menu ? css.open : ""}>
-        <li>
-          <Link to="/home">Home</Link>
+      <li>
+          <Link onClick={() => setActiveUnderline(1)} className={activeUnderline === 1 ? css.underline : null} to="/home">Home</Link>
         </li>
         <li>
-          <Link to="/create">Crear raza</Link>
+          <Link onClick={() => setActiveUnderline(2)} className={activeUnderline === 2 ? css.underline : null} to="/create">Crear raza</Link>
         </li>
         <li>
-          <a href="/home">Contactanos</a>
+          <a onClick={() => setActiveUnderline(3)} className={activeUnderline === 3 ? css.underline : null} href="/home">Contactanos</a>
         </li>
         <li>
         <Link to="/">Salir</Link>

@@ -54,6 +54,11 @@ nav .menu{
     height: 32px;
 }
 
+.underline{
+    text-decoration: underline;
+    text-underline-offset: 8px;
+}
+
 @media (max-width: 520px){
     nav ul{
         margin-left: 0px;
