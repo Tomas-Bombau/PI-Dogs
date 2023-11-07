@@ -2,7 +2,7 @@ import React from "react";
 //Hooks
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 //Components and Functions
 import { getDogById } from "../../Redux/Actions/actions";
@@ -13,6 +13,7 @@ import Errors from "../../Components/Errors/Errors";
 
 const Detail = () => {
   const params = useParams();
+  const navigate = useNavigate();
   const detailId = params.id;
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
@@ -32,6 +33,10 @@ const Detail = () => {
   console.log(errorID.message);
 
   const dogId = useSelector((state) => state?.dogId);
+
+  const goBack = () =>{
+    navigate(-1)
+  }
 
   if (detailId.length === 36) {
     dogId.id = "Nueva Raza";
@@ -76,6 +81,7 @@ const Detail = () => {
                 <span key={index}> {temperament} </span>
               ))}
             </p>
+            <button onClick={goBack}> Volver atrás </button>
           </div>
         </div>
       </div>

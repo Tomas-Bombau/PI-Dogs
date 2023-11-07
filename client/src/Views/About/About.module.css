@@ -1,3 +1,4 @@
+
 .aboutContainer{
     width: 100%;
     height: 90vh;
@@ -24,6 +25,7 @@
     inset rgb(246, 220, 233) 0 0 0 17px, 
     inset rgb(244, 234, 239) 0 0 0 21px, 
     inset #ffffff 0 0 0 2px;
+    transition: box-shadow 1s ease-in-out, opacity 1s ease-in-out;
     
 }
 
@@ -31,6 +33,7 @@
     width:  100%;
     border-radius: 10px;  
     box-shadow: 2px 2px 20px rgb(245, 194, 219);
+    transition: opacity 2s ease-in-out;
 }
 
 .details h1{
@@ -41,6 +44,12 @@
     left: 25%;
     transform: translate(-50%, -50%);
     text-align: center;
+    transition: opacity 4s ease-in-out;
+}
+
+.details h1 span{
+    font-size: 20px;
+    font-weight: 300;
 }
 
 .details .detailInfo{
@@ -54,7 +63,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-
+    transition: opacity 2s ease-in-out;
 }
 
 .details .detailInfo h2{
@@ -86,7 +95,7 @@
 
 .cardContainer:hover h1 {
     opacity: 0; 
-    transition: 1s ease-out
+    transition: 1s ease-in
 }
 
 .cardContainer:hover .detailInfo {
@@ -94,7 +103,12 @@
     transition: 2s ease-in;
 }
 
+
 .cardContainer:hover .profilePic {
     transition: 2s ease-in;
+    opacity: 0.3;
+}
+
+.cardContainer:hover .profilePic {
     opacity: 0.3;
 }

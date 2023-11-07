@@ -1,18 +1,22 @@
 //Hooks
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 //CSS
 import css from './Errors.module.css'
 
 const Errors = (props) => {
 
+  const navigate = useNavigate()
+
+  const goBack = () => {
+    navigate(-1)
+  }
+
   return (
     <div className={css.errors}>
         {" "}
-        We are sorry: {props.error}{" "}
-        <Link to="/">
-          <button> Go back </button>
-        </Link>
+        Lo sentimos, {props.error}{" "}
+          <button onClick={goBack}> Go back </button>
       </div>
   )
 }

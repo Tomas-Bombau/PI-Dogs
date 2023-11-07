@@ -1,0 +1,13 @@
+.favoriteContainer{
+    margin: 35px auto;
+    text-align: center;
+}
+
+.cardsContainer{
+    width: 70%;
+    margin: 35px auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+}

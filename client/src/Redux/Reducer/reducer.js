@@ -8,6 +8,8 @@ import {
   FILTER_SOURCE,
   DOG_BY_ID,
   DELETE,
+  ADD_FAV,
+  REMOVE_FAV,
 } from "../Actions/actionsTypes";
 
 const initialState = {
@@ -16,14 +18,20 @@ const initialState = {
   allTemperaments: [],
   dbDog: [],
   dogId: [],
+  favorites: [],
   dogIdCount: 0,
 };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_DOGS:
-      const db = action.payload.filter((dog) => dog.createdInDb === true)
-      return { ...state, allDogs: action.payload, allDogsCopy: action.payload, dbDog: db };
+      const db = action.payload.filter((dog) => dog.createdInDb === true);
+      return {
+        ...state,
+        allDogs: action.payload,
+        allDogsCopy: action.payload,
+        dbDog: db,
+      };
 
     case GET_TEMPERAMENTS:
       return { ...state, allTemperaments: action.payload };
@@ -35,9 +43,27 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, allDogs: action.payload };
 
     case DELETE:
-      const filterByDelete = state.dbDog.filter(dog => dog.id !== action.payload)
-      const allDogsFilterByDelete = state.allDogs.filter(dog => dog.id !== action.payload)
-      return { ...state, dbDog: filterByDelete, allDogs: allDogsFilterByDelete};
+      const filterByDelete = state.dbDog.filter(
+        (dog) => dog.id !== action.payload
+      );
+      const allDogsFilterByDelete = state.allDogs.filter(
+        (dog) => dog.id !== action.payload
+      );
+      return {
+        ...state,
+        dbDog: filterByDelete,
+        allDogs: allDogsFilterByDelete,
+      };
+
+    case ADD_FAV:
+      const copy = state.allDogs;
+      const addingDog = copy.filter((dog) => dog.id == action.payload);
+      return { ...state, favorites: [...state.favorites, ...addingDog] };
+
+    case REMOVE_FAV:
+      const copy2 = state.favorites;
+      const removingDog = copy2.filter((dog) => dog.id != action.payload);
+      return { ...state, favorites: [...removingDog]};
 
     case ORDER_NAME:
       const dogsName = state.allDogs;
@@ -98,12 +124,16 @@ const rootReducer = (state = initialState, action) => {
     case FILTER_SOURCE:
       const copyForSourceFilter = state.allDogsCopy;
       if (action.payload === "todos") {
-        return { ...state, allDogs: copyForSourceFilter};
+        return { ...state, allDogs: copyForSourceFilter };
       } else if (action.payload === "db") {
-        const filteredDogDB = copyForSourceFilter.filter((dog) => dog.createdInDb === true);
-        return { ...state, allDogs: filteredDogDB};
+        const filteredDogDB = copyForSourceFilter.filter(
+          (dog) => dog.createdInDb === true
+        );
+        return { ...state, allDogs: filteredDogDB };
       } else {
-        const filteredDog = copyForSourceFilter.filter((dog) => !dog.createdInDb);
+        const filteredDog = copyForSourceFilter.filter(
+          (dog) => !dog.createdInDb
+        );
         return { ...state, allDogs: filteredDog };
       }
 

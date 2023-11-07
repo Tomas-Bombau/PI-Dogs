@@ -9,6 +9,8 @@ import {
   DOG_BY_ID,
   POST,
   DELETE,
+  ADD_FAV,
+  REMOVE_FAV,
 } from "./actionsTypes";
 import axios from "axios";
 
@@ -21,7 +23,7 @@ export const getDogs = () => {
         payload: response.data,
       });
     } catch (error) {
-      throw Error (error.message)
+      throw Error(error.message);
     }
   };
 };
@@ -36,7 +38,7 @@ export const getDogById = (id) => {
         payload: data,
       });
     } catch (error) {
-      throw Error (error)
+      throw Error(error);
     }
   };
 };
@@ -51,7 +53,7 @@ export const getTemperaments = () => {
         payload: data,
       });
     } catch (error) {
-      throw Error (error)
+      throw Error(error);
     }
   };
 };
@@ -109,17 +111,28 @@ export const filterSource = (value) => {
     type: FILTER_SOURCE,
     payload: value,
   };
-}
+};
 
-  export const deleteDog = (newId) => {
-    return async function (dispatch) {
-      await axios.delete("http://localhost:3001/dogs/delete", {data: newId});
-      return dispatch({
-        type: DELETE,
-        payload: newId.id,
-      });
-    };
+export const deleteDog = (newId) => {
+  return async function (dispatch) {
+    await axios.delete("http://localhost:3001/dogs/delete", { data: newId });
+    return dispatch({
+      type: DELETE,
+      payload: newId.id,
+    });
   };
+};
 
+export const addFav = (id) => {
+  return {
+    type: ADD_FAV,
+    payload: id,
+  };
+};
 
-
+export const removeFav = (id) => {
+  return {
+    type: REMOVE_FAV,
+    payload: id,
+  };
+};

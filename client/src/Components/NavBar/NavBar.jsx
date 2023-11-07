@@ -22,8 +22,7 @@ const NavBar = () => {
     dispatch(searchByName(nameEntered));
   };
   
- 
-  console.log(activeUnderline)
+
   return (
     <nav>
       <h2>Mis Pichos 🐶</h2>
@@ -46,7 +45,10 @@ const NavBar = () => {
           <Link onClick={() => setActiveUnderline(2)} className={activeUnderline === 2 ? css.underline : null} to="/create">Crear raza</Link>
         </li>
         <li>
-          <Link onClick={() => setActiveUnderline(3)} className={activeUnderline === 3 ? css.underline : null} to="/about">Contactanos</Link>
+          <Link onClick={() => setActiveUnderline(3)} className={activeUnderline === 3 ? css.underline : null} to="/favorites">Favoritos</Link>
+        </li>
+        <li>
+          <Link onClick={() => setActiveUnderline(4)} className={activeUnderline === 4 ? css.underline : null} to="/about">Sobre mí</Link>
         </li>
         <li>
         <Link to="/">Salir</Link>

@@ -8,6 +8,8 @@ export const FILTER_SOURCE = "FILTER_SOURCE"
 export const DOG_BY_ID = "DOG_BY_ID"
 export const POST = "POST"
 export const DELETE = "DELETE"
+export const ADD_FAV = "ADD_FAV"
+export const REMOVE_FAV = "REMOVE_FAV"
 
 
 
