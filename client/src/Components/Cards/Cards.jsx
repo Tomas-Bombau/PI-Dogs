@@ -49,12 +49,12 @@ const Cards = (props) => {
   return (
     <div className={css.cards}>
       {fav ? (
-        <button className={css.like} onClick={handleFavorite}>
+        <button className={!fav ? css.like : css.unlike} onClick={handleFavorite}>
           {" "}
           ❤️{" "}
         </button>
       ) : (
-        <button className={css.like} onClick={handleFavorite}>
+        <button className={!fav ? css.like : css.unlike} onClick={handleFavorite}>
           {" "}
           🤍{" "}
         </button>

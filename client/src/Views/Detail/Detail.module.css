@@ -40,10 +40,6 @@
     padding: 0 20px;
 }
 
-.dogInformation span:hover{
-    cursor: pointer;
-}
-
 .dogInfo{
     margin: 5px 0px;
     display: flex;
