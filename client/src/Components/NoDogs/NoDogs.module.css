@@ -1,16 +1,11 @@
 .noDogs{
     width: 70%;
     margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    position: relative;
+    text-align: center;
 }
 
 .noDogs img{
-    margin-top: 100px;
-    
+    margin-top: 50px;
 }
 
 @media (max-width: 440px){

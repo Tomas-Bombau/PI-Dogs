@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchByName } from "../../Redux/Actions/actions";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 //CSS
 import css from "./NavBar.module.css";
@@ -22,6 +22,7 @@ const NavBar = () => {
     dispatch(searchByName(nameEntered));
   };
   
+  const location = useLocation()
 
   return (
     <nav>
@@ -54,12 +55,17 @@ const NavBar = () => {
         </li>
       </ul>
       <div className={css.enterBreed}>
+        {location.pathname == '/home' ? 
         <input
           placeholder="Ingresa la raza de un perro..."
           value={name}
           onChange={handleName}
           type="text"
-        />
+        /> : <input
+        placeholder="Búsqueda sólo desde Home"
+        disabled
+      /> 
+      }
       </div>
     </nav>
   );
