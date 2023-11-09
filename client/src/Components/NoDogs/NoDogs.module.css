@@ -13,7 +13,13 @@
     
 }
 
-.noDogs h1{
-    position: absolute;
-    bottom: 0%;
+@media (max-width: 440px){
+    .noDogs img{
+        width: 300px;
+        margin-top: 10px;
+    } 
+    .noDogs h1{
+        width: 100%;
+        font-size: 20px;
+    }
 }

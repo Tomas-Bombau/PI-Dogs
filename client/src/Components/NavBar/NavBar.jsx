@@ -29,7 +29,6 @@ const NavBar = () => {
       <div
         className={css.menu}
         onClick={(e) => {
-          e.stopPropagation();
           setMenu(!menu);
         }}
       >

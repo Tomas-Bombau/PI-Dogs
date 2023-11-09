@@ -67,16 +67,15 @@ nav .menu{
     text-shadow:0 0px 1px rgba(0, 0, 0, 0.8);
 }
 
-@media (max-width: 520px){
-    nav ul{
-        margin-left: 0px;
+@media (max-width: 1200px){
+    nav{
+       justify-content: space-evenly;
     }
 }
 
-
-@media (max-width: 480px){
-    nav .menu{
-        display: flex;
+@media (max-width: 960px){
+    nav{
+        justify-content: space-evenly;
     }
 
     nav h2{
@@ -84,7 +83,22 @@ nav .menu{
     }
 
     nav{
+       gap: 20px;
+    }
+
+    nav ul{
+       margin: 0px;
+     }
+}
+
+@media (max-width: 480px){
+    nav .menu{
+        display: flex;
+    }
+
+    nav{
         flex-direction: column-reverse;
+        align-items: flex-start;
     }
 
     nav .enterBreed input{
@@ -100,6 +114,12 @@ nav .menu{
         gap: 0px;
     }
 
+    .underline{
+        text-decoration: underline rgba(205, 40, 122);
+        text-decoration-thickness: 2px;
+        text-underline-offset: 5px;
+    }
+
     nav ul.open{
         display: flex;
     }
@@ -113,16 +133,13 @@ nav .menu{
     nav ul li a{
         margin: 2px 2px;
     }
-
-    nav ul li a:hover{
-        background-color:  rgba(205, 40, 122);
-    }
 }
 
 nav .menu span{
     height: 8px;
     width: 100%;
-    background-color: white;
+    color: black;
+    border: 1px solid;
     border-radius: 2px;
 }
 

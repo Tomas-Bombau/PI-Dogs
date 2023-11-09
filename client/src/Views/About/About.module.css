@@ -1,4 +1,3 @@
-
 .aboutContainer{
     width: 100%;
     height: 90vh;
@@ -73,6 +72,7 @@
  .detailInfo .tecnologies{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
@@ -111,4 +111,54 @@
 
 .cardContainer:hover .profilePic {
     opacity: 0.3;
+}
+
+@media (max-width:1350px) {
+    .cardContainer{
+        margin-top: 300px;
+    }
+
+    .cardContainer .details h1{
+        position: relative;
+        text-align: center;
+        top: 0%;
+        left: 0%;
+        transform: translate(0%, 0%);
+    }
+
+    .details .detailInfo{
+        position: relative;
+        opacity: 1;
+        gap: 5px;   
+}   
+}
+
+@media (max-width:900px) {
+    .cardContainer{
+        width: 80%;
+        margin-top: 300px;
+    }
+}
+
+@media (max-width:550px) {
+    .cardContainer{
+        width: 100%;
+        margin: 20px 20px;
+    }
+
+    .profilePic{
+        display: none;
+    }
+
+    .details .detailInfo{
+    font-size: 12px;
+    }
+}
+
+@media (max-width: 460px){
+    .cardContainer{
+        margin-top: auto 0px;
+        padding: 10px;
+        line-height: 22px;
+    }
 }
