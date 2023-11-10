@@ -30,6 +30,8 @@ const Home = () => {
   const [errors, setErrors] = useState("");
   const [aux, setAux] = useState(true);
 
+
+
   useEffect(() => {
     dispatch(getDogs())
       .then(dispatch(getTemperaments()))
@@ -40,7 +42,7 @@ const Home = () => {
         setErrors(error.message);
         setLoading(false);
       });
-  }, [dispatch]);
+  }, []);
 
   const dogs = useSelector((state) => state?.allDogs);
   const temperaments = useSelector((state) => state?.allTemperaments);
@@ -135,8 +137,6 @@ const Home = () => {
           setCurrentPage={setCurrentPage}
         />
         {dogs.length === 0 ? <NoDogs /> : <CardsContainer dogs={currentDogs} />}
-
-        {/* {errors ? null : null} */}
         <Footer />
       </main>
     </div>

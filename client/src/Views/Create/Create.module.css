@@ -152,6 +152,7 @@
     background-color: rgba(4, 4, 4, 0.9);
     text-align: center;
     gap: 15px;
+    z-index: 3;
 }
 
 .botonInicio{

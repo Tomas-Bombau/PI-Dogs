@@ -313,7 +313,7 @@ const Create = () => {
             </button>
           </div>
         </div>
-        {responseMessage ? <div className={css.success}>  La raza se ha creado satisfactoriamente<p className={css.botonInicio}><Link to='/home'> Volver al inicio </Link></p></div> : null}
+        {responseMessage ? <div className={css.success}>  La raza se ha creado satisfactoriamente <p className={css.botonInicio}><Link to='/home'> Volver al inicio </Link></p></div> : null}
       </form>
     </section>
   );

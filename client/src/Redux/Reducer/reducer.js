@@ -63,7 +63,7 @@ const rootReducer = (state = initialState, action) => {
     case REMOVE_FAV:
       const copy2 = state.favorites;
       const removingDog = copy2.filter((dog) => dog.id != action.payload);
-      return { ...state, favorites: [...removingDog]};
+      return { ...state, favorites: [...removingDog] };
 
     case ORDER_NAME:
       const dogsName = state.allDogs;
