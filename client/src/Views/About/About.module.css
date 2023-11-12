@@ -114,29 +114,59 @@
 }
 
 @media (max-width:1350px) {
+    .aboutContainer .profilePic:hover{
+        transition: none;
+        opacity: 1;
+    }
+    
+    .cardContainer:hover h1 {
+        transition: none;
+        opacity: 1;
+    }
+    
+    .cardContainer:hover .detailInfo {
+        transition: none;
+        opacity: 1;
+    }
+    
+    
+    .cardContainer:hover .profilePic {
+        transition: none;
+        opacity: 1;
+    }
+    
+    .cardContainer:hover .profilePic {
+        transition: none;
+        opacity: 1;
+    }
+
     .cardContainer{
-        margin-top: 300px;
+        margin: auto 0px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 20px;
     }
 
     .cardContainer .details h1{
         position: relative;
-        text-align: center;
         top: 0%;
         left: 0%;
         transform: translate(0%, 0%);
     }
 
+    .details .detailInfo h2{
+        text-align: left;
+    }
     .details .detailInfo{
         position: relative;
         opacity: 1;
-        gap: 5px;   
-}   
+        gap: 10px;   
+    }   
 }
 
 @media (max-width:900px) {
     .cardContainer{
         width: 80%;
-        margin-top: 300px;
     }
 }
 
