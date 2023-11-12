@@ -30,6 +30,7 @@ const NavBar = () => {
       <div
         className={css.menu}
         onClick={(e) => {
+          e.stopPropagation()
           setMenu(!menu);
         }}
       >
@@ -38,16 +39,16 @@ const NavBar = () => {
         <span></span>
       </div>
       <ul className={menu ? css.open : ""}>
-      <li>
+      <li  onClick={() => setMenu(!menu)}>
           <Link onClick={() => setActiveUnderline(1)} className={activeUnderline === 1 ? css.underline : null} to="/home">Home</Link>
         </li>
-        <li>
+        <li onClick={() => setMenu(!menu)}>
           <Link onClick={() => setActiveUnderline(2)} className={activeUnderline === 2 ? css.underline : null} to="/create">Crear raza</Link>
         </li>
-        <li>
+        <li onClick={() => setMenu(!menu)}>
           <Link onClick={() => setActiveUnderline(3)} className={activeUnderline === 3 ? css.underline : null} to="/favorites">Favoritos</Link>
         </li>
-        <li>
+        <li onClick={() => setMenu(!menu)}>
           <Link onClick={() => setActiveUnderline(4)} className={activeUnderline === 4 ? css.underline : null} to="/about">Sobre mí</Link>
         </li>
         <li>
