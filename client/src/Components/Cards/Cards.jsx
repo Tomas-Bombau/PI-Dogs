@@ -23,7 +23,7 @@ const Cards = (props) => {
     temperaments,
     createdInDb,
   } = props;
-  
+
   const [fav, setFav] = useState(false);
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state?.favorites);
@@ -48,12 +48,18 @@ const Cards = (props) => {
   return (
     <div className={css.cards}>
       {fav ? (
-        <button className={!fav ? css.like : css.unlike} onClick={handleFavorite}>
+        <button
+          className={!fav ? css.like : css.unlike}
+          onClick={handleFavorite}
+        >
           {" "}
           ❤️{" "}
         </button>
       ) : (
-        <button className={!fav ? css.like : css.unlike} onClick={handleFavorite}>
+        <button
+          className={!fav ? css.like : css.unlike}
+          onClick={handleFavorite}
+        >
           {" "}
           🤍{" "}
         </button>
