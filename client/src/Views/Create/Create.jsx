@@ -117,7 +117,7 @@ const Create = () => {
 
   const handlerDelete = (index) => {
     const filteredTemperaments = chosenTemperaments.filter(
-      (e) => chosenTemperaments.indexOf(e) !== index
+      (temp) => chosenTemperaments.indexOf(temp) !== index
     );
     setDog({ ...dog, temperaments: filteredTemperaments });
     setchosenTemperaments(filteredTemperaments);
