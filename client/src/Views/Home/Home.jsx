@@ -65,8 +65,12 @@ const Home = () => {
   };
 
   const handleOrder = (event) => {
+    
     event.preventDefault();
     const value = event.target.value;
+    if (value === "default") {
+      return null
+    }
     value === "crec" || value === "decre"
       ? dispatch(orderWeight(value))
       : dispatch(orderName(value));
@@ -77,12 +81,18 @@ const Home = () => {
   const handleTemperaments = (event) => {
     event.preventDefault();
     const value = event.target.value;
+    if (value === "default") {
+      return null
+    }
     dispatch(filterTemperament(value));
   };
 
   const handleSource = (event) => {
     event.preventDefault();
     const value = event.target.value;
+    if (value === "default") {
+      return null
+    }
     dispatch(filterSource(value));
     setCurrentPage(1);
   };
@@ -103,19 +113,21 @@ const Home = () => {
           <h1> PI Henry</h1>
           <div>
             <Link to="/create">
-              <button> Crear Raza</button>
+              <button> Crear raza</button>
             </Link>
           </div>
         </header>
         <section className={css.options}>
           <button onClick={handleReaload}>Recargar razas </button>
           <select name="order" onChange={handleOrder}>
+            <option value="default" selected> Ordenar razas por... </option>
             <option value="a-z"> Razas A - Z </option>
             <option value="z-a"> Razas Z - A </option>
             <option value="crec"> Razas más livianas </option>
             <option value="decre"> Razas más pesadas </option>
           </select>
           <select name="temperaments" onChange={handleTemperaments}>
+            <option value="default" selected> Filtrar temperamentos </option>
             <option value="todos"> Todos </option>
             {temperaments.map((temperament, index) => (
               <option key={index} value={temperament}>
@@ -124,9 +136,10 @@ const Home = () => {
             ))}
           </select>
           <select onChange={handleSource} name="order" id="">
-            <option value="todos"> Todos </option>
-            <option value="db"> Razas creadas </option>
-            <option value="api"> Razas existentes</option>
+            <option value="default" selected> Filtrar razas por origen </option>
+            <option value="todos"> Todas las razas </option>
+            <option value="db"> Razas del usuario</option>
+            <option value="api"> Razas de la API</option>
           </select>
         </section>
         <Pagination
