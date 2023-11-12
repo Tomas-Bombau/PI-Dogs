@@ -26,7 +26,7 @@ const Cards = (props) => {
   
   const [fav, setFav] = useState(false);
   const dispatch = useDispatch();
-  const favorites = useSelector((state) => state.favorites);
+  const favorites = useSelector((state) => state?.favorites);
 
   useEffect(() => {
     favorites.forEach((favorite) => {
@@ -42,7 +42,6 @@ const Cards = (props) => {
   };
 
   const handleFavorite = () => {
-    setFav(!fav);
     return fav ? dispatch(removeFav(id)) : dispatch(addFav(id));
   };
 

@@ -157,8 +157,10 @@
 
 @media (max-width: 460px){
     .cardContainer{
-        margin-top: auto 0px;
-        padding: 10px;
+        margin: auto 0px;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 50px 10px;
         line-height: 22px;
     }
 }

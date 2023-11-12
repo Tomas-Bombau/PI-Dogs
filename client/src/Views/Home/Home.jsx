@@ -42,7 +42,7 @@ const Home = () => {
         setErrors(error.message);
         setLoading(false);
       });
-  }, []);
+  }, [dispatch]);
 
   const dogs = useSelector((state) => state?.allDogs);
   const temperaments = useSelector((state) => state?.allTemperaments);

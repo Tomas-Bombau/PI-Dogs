@@ -24,7 +24,6 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_DOGS:
-      const db = action.payload.filter((dog) => dog.createdInDb === true);
       return {
         ...state,
         allDogs: action.payload,
@@ -40,17 +39,16 @@ const rootReducer = (state = initialState, action) => {
     case SEARCH:
       return { ...state, allDogs: action.payload };
 
-      case DELETE:
-        const copyForSource = state.allDogsCopy;
-        const allDogsFilterByDelete = copyForSource.filter(
-          (dog) => dog.id !== action.payload
-        );
-        return {
-          ...state,
-          allDogs: allDogsFilterByDelete,
-          allDogsCopy: allDogsFilterByDelete,
-        };
-  
+    case DELETE:
+      const copyForSource = state.allDogsCopy;
+      const allDogsFilterByDelete = copyForSource.filter(
+        (dog) => dog.id !== action.payload
+      );
+      return {
+        ...state,
+        allDogs: allDogsFilterByDelete,
+        allDogsCopy: allDogsFilterByDelete,
+      };
 
     case ADD_FAV:
       const copy = state.allDogs;

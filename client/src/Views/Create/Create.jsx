@@ -9,7 +9,7 @@ import { getTemperaments, postDog } from "../../Redux/Actions/actions";
 import validation from "./validation";
 import validationTemperaments from "./validationTemperaments";
 
-//
+//CSS
 import css from "./Create.module.css";
 import Errors from "../../Components/Errors/Errors";
 import { Link } from "react-router-dom";
@@ -21,7 +21,6 @@ const Create = () => {
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [responseMessage, setResponseMessage] = useState(null);
   const [responseError, setResponseError] = useState(null);
-  const [errors, setErrors] = useState("");
   const [dog, setDog] = useState({
     reference_image_id: "",
     life_span: "",
@@ -51,7 +50,7 @@ const Create = () => {
         setLoading(false);
       })
       .catch((error) => {
-        setErrors(error.message);
+        setResponseError(error.message);
       });
   }, []);
   

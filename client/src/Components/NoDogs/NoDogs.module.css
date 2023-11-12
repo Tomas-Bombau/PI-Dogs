@@ -1,16 +1,38 @@
 .noDogs{
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
 }
 
 .noDogs img{
     margin-top: 50px;
+    width: 50%;
+}
+
+
+@media (max-width: 800px){
+    .noDogs img{
+        width: 440px;
+    } 
+    .noDogs h1{
+        width: 100%;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 600px){
+    .noDogs img{
+        width: 350px;
+    } 
+    .noDogs h1{
+        width: 100%;
+        font-size: 20px;
+    }
 }
 
 @media (max-width: 440px){
     .noDogs img{
-        width: 300px;
+        width: 250px;
         margin-top: 10px;
     } 
     .noDogs h1{

@@ -181,25 +181,34 @@
 }
 
 
-@media (max-width:400px) {
+@media (max-width:500px) {
     .formContainer{
-        width: 300px;
-        height: 750px;
-    }
+        background-size:cover;
+        width: 80%;
+        height: fit-content;
+        margin: auto 0px;
+        margin-top: 20px;
 
-    .formContent .alturaContainer{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
+        & .altYPesoContainer{
+            gap: 5px;
+        }
 
-    .formContent .pesoContainer{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
+        & .alturaContainer{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 5px;
+        }
+        
+        & .pesoContainer{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 5px;
+        }
     }
 }
