@@ -16,7 +16,6 @@ const initialState = {
   allDogs: [],
   allDogsCopy: [],
   allTemperaments: [],
-  dbDog: [],
   dogId: [],
   favorites: [],
   dogIdCount: 0,
@@ -30,7 +29,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         allDogs: action.payload,
         allDogsCopy: action.payload,
-        dbDog: db,
       };
 
     case GET_TEMPERAMENTS:
@@ -42,18 +40,17 @@ const rootReducer = (state = initialState, action) => {
     case SEARCH:
       return { ...state, allDogs: action.payload };
 
-    case DELETE:
-      const filterByDelete = state.dbDog.filter(
-        (dog) => dog.id !== action.payload
-      );
-      const allDogsFilterByDelete = state.allDogs.filter(
-        (dog) => dog.id !== action.payload
-      );
-      return {
-        ...state,
-        dbDog: filterByDelete,
-        allDogs: allDogsFilterByDelete,
-      };
+      case DELETE:
+        const copyForSource = state.allDogsCopy;
+        const allDogsFilterByDelete = copyForSource.filter(
+          (dog) => dog.id !== action.payload
+        );
+        return {
+          ...state,
+          allDogs: allDogsFilterByDelete,
+          allDogsCopy: allDogsFilterByDelete,
+        };
+  
 
     case ADD_FAV:
       const copy = state.allDogs;
