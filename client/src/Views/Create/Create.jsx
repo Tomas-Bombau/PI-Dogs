@@ -1,9 +1,9 @@
 // Hooks
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 //Components and Functions
-import { postDog } from "../../Redux/Actions/actions";
+import { getTemperaments, postDog } from "../../Redux/Actions/actions";
 
 //Validations
 import validation from "./validation";
@@ -13,12 +13,15 @@ import validationTemperaments from "./validationTemperaments";
 import css from "./Create.module.css";
 import Errors from "../../Components/Errors/Errors";
 import { Link } from "react-router-dom";
+import Loading from "../../Components/Loading/Loading";
 
 const Create = () => {
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [responseMessage, setResponseMessage] = useState(null);
   const [responseError, setResponseError] = useState(null);
+  const [errors, setErrors] = useState("");
   const [dog, setDog] = useState({
     reference_image_id: "",
     life_span: "",
@@ -41,7 +44,18 @@ const Create = () => {
   });
   const [chosenTemperaments, setchosenTemperaments] = useState();
   const [count, setCount] = useState(1);
-  const allTemperaments = useSelector((state) => state.allTemperaments);
+
+  useEffect(() => {
+    dispatch(getTemperaments())
+      .then(() => {
+        setLoading(false);
+      })
+      .catch((error) => {
+        setErrors(error.message);
+      });
+  }, []);
+  
+  const allTemperaments = useSelector((state) => state?.allTemperaments);
 
   const formHandler = (event) => {
     let property = event.target.name;
@@ -111,6 +125,9 @@ const Create = () => {
     setCount(count - 1);
   };
 
+  if (loading) {
+    return <Loading />;
+  }
 
   if (responseError) {
     return <Errors error={responseError} />;
@@ -133,7 +150,7 @@ const Create = () => {
                   required
                 />
               </div>
-              {errorValidation.name ? <p>{errorValidation.name}</p>: null}
+              {errorValidation.name ? <p>{errorValidation.name}</p> : null}
             </label>
           </div>
 
@@ -313,7 +330,15 @@ const Create = () => {
             </button>
           </div>
         </div>
-        {responseMessage ? <div className={css.success}>  La raza se ha creado satisfactoriamente <p className={css.botonInicio}><Link to='/home'> Volver al inicio </Link></p></div> : null}
+        {responseMessage ? (
+          <div className={css.success}>
+            {" "}
+            La raza se ha creado satisfactoriamente{" "}
+            <p className={css.botonInicio}>
+              <Link to="/home"> Volver al inicio </Link>
+            </p>
+          </div>
+        ) : null}
       </form>
     </section>
   );

@@ -15,12 +15,12 @@ function App() {
     <div className="App">
       {location.pathname !== "/" ?  <NavBar /> : null}
       <Routes>
-        <Route path='/' Component={Landing}/>
-        <Route path='/home' Component={Home}/>
-        <Route path='/create' Component={Create}/>
-        <Route path='/detail/:id' Component={Detail} />
-        <Route path='/favorites' Component={Favorites} />
-        <Route path='/about' Component={About} />
+        <Route path='/' element={<Landing />}/>
+        <Route path='/home' element={<Home />}/>
+        <Route path='/create' element={<Create />}/>
+        <Route path='/detail/:id' element={<Detail/>} />
+        <Route path='/favorites' element={<Favorites/>} />
+        <Route path='/about' element={<About/>} />
       </Routes>
     </div>
   );
