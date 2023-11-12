@@ -22,14 +22,16 @@ const Pagination = ({
   return (
     <section className={css.paginationContainer}>
       <ul>
-        <a
-          className={css.arrows}
-          onClick={() =>
-            currentPage !== 1 ? setCurrentPage(currentPage - 1) : null
-          }
-        >
-          <span> &#8701; </span>
-        </a>
+        {currentPage !== 1 ? (
+          <a
+            className={css.arrows}
+            onClick={() =>
+              currentPage !== 1 ? setCurrentPage(currentPage - 1) : null
+            }
+          >
+            <span> &#8701; </span>
+          </a>
+        ) : null}
         {pageNumbers &&
           pageNumbers.map((number, index) => {
             return (
@@ -38,15 +40,17 @@ const Pagination = ({
               </li>
             );
           })}
-        <a
-          onClick={() =>
-            currentPage !== numberOfPages
-              ? setCurrentPage(currentPage + 1)
-              : null
-          }
-        >
-          <span>&#8702;</span>
-        </a>
+        {currentPage !== numberOfPages ? (
+          <a
+            onClick={() =>
+              currentPage !== numberOfPages
+                ? setCurrentPage(currentPage + 1)
+                : null
+            }
+          >
+            <span>&#8702;</span>
+          </a>
+        ) : null}
       </ul>
     </section>
   );
