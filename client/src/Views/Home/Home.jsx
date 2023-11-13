@@ -85,6 +85,7 @@ const Home = () => {
       return null
     }
     dispatch(filterTemperament(value));
+    setCurrentPage(1);
   };
 
   const handleSource = (event) => {
