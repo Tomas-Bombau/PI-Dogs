@@ -42,6 +42,7 @@ const Cards = (props) => {
   };
 
   const handleFavorite = () => {
+    setFav(!fav)
     return fav ? dispatch(removeFav(id)) : dispatch(addFav(id));
   };
 
