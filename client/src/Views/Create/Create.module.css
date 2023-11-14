@@ -185,10 +185,8 @@
     .formContainer{
         background-size:cover;
         width: 80%;
-        height: fit-content;
         margin: auto 0px;
-        margin-top: 20px;
-
+        height: 800px;
         & .altYPesoContainer{
             gap: 5px;
         }

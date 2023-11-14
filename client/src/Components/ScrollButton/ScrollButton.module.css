@@ -1,0 +1,19 @@
+.goUp{
+    position: fixed; 
+    bottom: 5%;
+    right: 5%;
+    z-index: 10; 
+    cursor: pointer; 
+    width: 40px;
+    overflow: hidden;
+    &:hover{
+        background-color: rgba(205, 40, 122);
+        border-radius: 22px 22px;
+    }
+}
+
+@media (max-width: 450px){
+.goUp{
+    width: 35px
+}
+}

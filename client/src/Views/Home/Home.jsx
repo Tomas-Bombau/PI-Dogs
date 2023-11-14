@@ -1,4 +1,3 @@
-import React from "react";
 //Hooks
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,6 +22,7 @@ import headerImage from "../../assets/home-header.webp";
 import Loading from "../../Components/Loading/Loading";
 import Footer from "../../Components/Footer/Footer";
 import Errors from "../../Components/Errors/Errors";
+import ScrollButton from '../../Components/ScrollButton/ScrollButton';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -151,6 +151,7 @@ const Home = () => {
           setCurrentPage={setCurrentPage}
         />
         {dogs.length === 0 ? <NoDogs /> : <CardsContainer dogs={currentDogs} />}
+        <ScrollButton />
         <Footer />
       </main>
     </div>
