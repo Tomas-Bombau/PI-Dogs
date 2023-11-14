@@ -121,14 +121,14 @@ const Home = () => {
         <section className={css.options}>
           <button onClick={handleReaload}>Recargar razas </button>
           <select name="order" onChange={handleOrder}>
-            <option value="default" selected> Ordenar razas por... </option>
+            <option value="default" selected>----------Ordenar razas por----------</option>
             <option value="a-z"> Razas A - Z </option>
             <option value="z-a"> Razas Z - A </option>
             <option value="crec"> Razas más livianas </option>
             <option value="decre"> Razas más pesadas </option>
           </select>
           <select name="temperaments" onChange={handleTemperaments}>
-            <option value="default" selected> Filtrar temperamentos </option>
+            <option value="default" selected>----------Filtrar temperamentos----------</option>
             <option value="todos"> Todos </option>
             {temperaments.map((temperament, index) => (
               <option key={index} value={temperament}>
@@ -137,7 +137,7 @@ const Home = () => {
             ))}
           </select>
           <select onChange={handleSource} name="order" id="">
-            <option value="default" selected> Filtrar razas por origen </option>
+            <option value="default" selected>----------Filtrar razas por origen----------</option>
             <option value="todos"> Todas las razas </option>
             <option value="db"> Razas del usuario</option>
             <option value="api"> Razas de la API</option>
