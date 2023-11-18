@@ -61,16 +61,18 @@
             & :active{
                 transform: scale(1.05);
             }
-            & :hover{
-                cursor: pointer;
-            }
         }
         & select{
             padding: 3px 0px;
             border-radius: 5px;
         }
+        & button:hover{
+            cursor: pointer;
+            transform: scale(1.05);
+        }
     }
 }
+
 
 @media (max-width: 1450px){
 .headerImage img{
