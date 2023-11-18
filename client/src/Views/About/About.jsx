@@ -35,8 +35,8 @@ const About = () => {
             <div className={css.tecnologies}>
               <img src={html} alt="html" />
               <img src={css3} alt="css3" />
-              <img src={javascript} alt="v" />
-              <img src={react} alt="v" />
+              <img src={javascript} alt="javascript" />
+              <img src={react} alt="react" />
               <img src={git} alt="git" />
               <img src={node} alt="node" />
               <img src={sequelize} alt="sequelize" />

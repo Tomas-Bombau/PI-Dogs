@@ -15,6 +15,7 @@ import {
 const initialState = {
   allDogs: [],
   allDogsCopy: [],
+  allDogsCopyToCombineFilters: [],
   allTemperaments: [],
   dogId: [],
   favorites: [],
@@ -37,7 +38,7 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, dogId: action.payload };
 
     case SEARCH:
-      return { ...state, allDogs: action.payload };
+      return { ...state, allDogs: action.payload,  allDogsCopyToCombineFilters: action.payload};
 
     case DELETE:
       const copyForSource = state.allDogsCopy;
@@ -106,11 +107,11 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, allDogs: dogsByWeight };
 
     case FILTER_TEMPERAMENT:
-      const copyForTemperamentSource = state.allDogsCopy;
+      const copyForTemperament = state.allDogsCopyToCombineFilters
       if (action.payload === "todos") {
-        return { ...state, allDogs: copyForTemperamentSource };
+        return { ...state, allDogs: copyForTemperament};
       } else {
-        const filteredDog = copyForTemperamentSource.filter((dog) =>
+          const filteredDog = copyForTemperament.filter((dog) =>
           dog.temperaments.includes(action.payload)
         );
         return { ...state, allDogs: filteredDog };
