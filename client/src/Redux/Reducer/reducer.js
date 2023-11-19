@@ -45,6 +45,9 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         allDogs: action.payload,
         allDogsCopyToCombineFilters: action.payload,
+        allDogsCopyToCombineFilters1: [],
+        allDogsCopyToCombineFilters2: [],
+        allDogsCopyToCombineFilters3: [],
       };
 
     case DELETE:
