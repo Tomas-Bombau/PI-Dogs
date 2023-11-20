@@ -54,9 +54,9 @@ const Detail = () => {
   return (
     <section className={css.background}>
       <div className={css.dogDetail}>
-        <img src={scotch} className={css.scotch} alt="" />
+        <img src={scotch} className={css.scotch} alt="scotch" />
         <div className={css.img}>
-          <img src={dogId?.reference_image_id} alt="" />
+          <img src={dogId.reference_image_id} alt="dog" />
         </div>
         <div className={css.dogInformation}>
           <div className={css.dogInfo}>

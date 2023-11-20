@@ -62,10 +62,7 @@ const NavBar = () => {
           value={name}
           onChange={handleName}
           type="text"
-        /> : <input
-        placeholder="Búsqueda sólo desde Home"
-        disabled
-      /> 
+        /> : null // <div className={css.searchBarHidden}></div>
       }
       </div>
     </nav>

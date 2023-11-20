@@ -28,7 +28,6 @@
     width: 150px;
 }
 
-
 .img{
     width: 50%;
 }
@@ -109,7 +108,7 @@
     cursor: pointer; 
 }
 
-@media (max-width: 1200px){
+@media (max-width: 1400px){
     .background{
         height: 100%
     }
