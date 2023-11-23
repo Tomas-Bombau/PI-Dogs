@@ -31,8 +31,6 @@ const Detail = () => {
       });
   }, [detailId, dispatch]);
 
-  console.log(errorID.message);
-
   const dogId = useSelector((state) => state?.dogId);
 
   const goBack = () => {

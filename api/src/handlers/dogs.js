@@ -44,7 +44,7 @@ dogs.get("/:idRaza", async (req, res) => {
   }
 });
 
-// Getting posting dog
+// Posting dog
 dogs.post("/", async (req, res) => {
   const {
     name,

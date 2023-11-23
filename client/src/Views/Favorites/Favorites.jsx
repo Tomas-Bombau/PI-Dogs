@@ -28,7 +28,7 @@ const Favorites = () => {
         setErrors(error.message);
         setLoading(false);
       });
-  }, []);
+  }, [dispatch]);
 
   const favoritesDogs = useSelector((state) => state?.favorites);
 
@@ -45,7 +45,7 @@ const Favorites = () => {
     <div className={css.favoriteContainer}>
       <h1>Mis favoritos</h1>
       <div className={css.cardsContainer}>
-        {favoritesDogs.length == 0 ? (
+        {favoritesDogs.length === 0 ? (
           <NoDogs />
         ) : (
           favoritesDogs.map((e) => {

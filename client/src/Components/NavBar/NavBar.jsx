@@ -56,7 +56,7 @@ const NavBar = () => {
         </li>
       </ul>
       <div className={css.enterBreed}>
-        {location.pathname == '/home' ? 
+        {location.pathname === '/home' ? 
         <input
           placeholder="Ingresa la raza de un perro..."
           value={name}

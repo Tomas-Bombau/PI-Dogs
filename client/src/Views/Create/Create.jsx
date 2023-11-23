@@ -27,6 +27,7 @@ const Create = () => {
     name: "",
     weightMin: "",
     weightMax: "",
+    ternura: "",
     heightMin: "",
     heightMax: "",
     temperaments: [],
@@ -36,6 +37,7 @@ const Create = () => {
     name: " ",
     heightMin: "",
     heightMax: "",
+    ternura: "",
     weightMin: "",
     weightMax: "",
     life_span: "",
@@ -52,7 +54,7 @@ const Create = () => {
       .catch((error) => {
         setResponseError(error.message);
       });
-  }, []);
+  }, [dispatch]);
   
   const allTemperaments = useSelector((state) => state?.allTemperaments);
 

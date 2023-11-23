@@ -46,18 +46,16 @@ const About = () => {
               <a
                 href="https://github.com/Tomas-Bombau"
                 target="_blank"
-                rel="noreferrer"
               >
                 <img src={githublogo} alt="githublogo" />
               </a>
               <a
                 href="https://www.linkedin.com/in/tom%C3%A1s-ignacio-bombau-049a52139/"
-                rel="noreferrer"
                 target="_blank"
               >
                 <img src={linkedinlogo} alt="linkedin" />
               </a>
-              <a href="" rel="noreferrer" target="_blank">
+              <a href="https://portfolio-pink-ten-39.vercel.app/" target="_blank">
                 <img src={twitter} alt="twitter" />
               </a>
             </div>
